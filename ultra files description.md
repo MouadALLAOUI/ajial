@@ -1,0 +1,76 @@
+## Root
+- `login.html` – Login/splash page for Ajial with the main branding and sign-in form.
+- `ultra files description.md` – Repository inventory that summarizes the purpose of each static file.
+
+## admin/
+- `admin/css/bootstrap.css` – Bootstrap framework stylesheet used by the static admin and representative templates for grid, forms, buttons, tables, and common UI components.
+- `admin/css/jquery.mCustomScrollbar.css` – Styles for the custom scrollbar plugin used by scrollable menu and content areas.
+- `admin/css/responsive.css` – Responsive layout overrides that adjust the Ajial template across smaller screen sizes.
+- `admin/css/style.css` – Main Ajial theme stylesheet containing the dashboard layout, navigation, widgets, forms, tables, and visual styling.
+- `admin/font-awesome/css/font-awesome.css` – Font Awesome icon font stylesheet used for menu, button, and dashboard icons.
+- `admin/js/ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js` – Local copy of jQuery 1.9.1 used by the legacy static template scripts.
+- `admin/js/bootstrap.js` – Bootstrap JavaScript components for dropdowns, modals, tabs, and other interactive UI behavior.
+- `admin/js/script.js` – Custom Ajial template JavaScript for navigation, widgets, responsive behavior, and page interactions.
+
+## representant/
+- `representant/Accueil.html` – Representative dashboard landing page showing delivery, sales, and stock summary content.
+- `representant/Robot.html` – Representative Robot delivery list page with a table/form for school or client visit records.
+- `representant/bon de livraison/BL.html` – Representative delivery note listing page with BL rows and static action icons.
+- `representant/bon de livraison/Renboursement.html` – Representative reimbursement management page showing credit, advance, remaining balance, and reimbursement rows.
+- `representant/bon de livraison/synthese-bl-rep.html` – Representative BL synthesis page summarizing stock, deliveries, deposits, and totals by level.
+- `representant/cahier de texte/demande_cahier.html` – Representative request form for cahier de texte/communication models with preview examples.
+- `representant/cahier de texte/suivi_cahier.html` – Representative tracking page for cahier de texte requests and their status.
+- `representant/carte de visite & chevalt/demande_carte.html` – Representative request form for business cards and chevalet-style materials.
+- `representant/carte de visite & chevalt/suivi_cartes.html` – Representative tracking page for business card and chevalet orders.
+- `representant/client/Historique.html` – Client history page focused on reimbursement synthesis and historical client activity.
+- `representant/client/Synthèse Global/Livraison-global.html` – Representative global client delivery synthesis page.
+- `representant/client/Synthèse Global/remb-global.html` – Representative global client reimbursement synthesis page.
+- `representant/client/bl-client.html` – Representative page for creating or reviewing client delivery notes.
+- `representant/client/client.html` – Representative client list and client maintenance page.
+- `representant/client/remb-client.html` – Representative client reimbursement page with reimbursement form and table content.
+- `representant/client/synthese-bl.html` – Representative client BL synthesis selector and summary page.
+- `representant/client/synthese-remb.html` – Representative client reimbursement synthesis summary page.
+- `representant/depot.html` – Representative deposits page listing books or quantities held in depot.
+- `representant/facture/facturation-msm.html` – Representative MSM-MEDIAS invoice page with invoice list and invoice creation content.
+- `representant/facture/facturation-wataniya.html` – Representative El Wataniya invoice page with invoice list and invoice creation content.
+- `representant/images/logo.png` – Ajial/representative logo image used by the original static template branding.
+- `representant/images/logo1.png` – Alternate Ajial/representative logo image used by the original static template assets.
+- `representant/profil.html` – Representative profile page for viewing personal representative account details.
+
+## safe/
+- `safe/Accueil.html` – SAFE/admin dashboard landing page for choosing a destination or work area.
+- `safe/Emailing/emailing.html` – SAFE/admin page for composing and sending email messages.
+- `safe/Emailing/invitation.html` – SAFE/admin page for composing and sending invitation messages.
+- `safe/Fournisseurs/imp-bl.html` – Supplier delivery note page showing BL records from supplier to MSM-MEDIAS.
+- `safe/Fournisseurs/imp-remb.html` – Supplier reimbursement page showing reimbursements from MSM-MEDIAS to suppliers.
+- `safe/Fournisseurs/imprimeurs.html` – Supplier/imprimeur list page with supplier rows and static action controls.
+- `safe/Robot.html` – SAFE/admin Robot delivery list page for tracking visits or deliveries.
+- `safe/Réglage/Peid-facture.html` – SAFE/admin invoice footer settings page.
+- `safe/Réglage/modeles.html` – SAFE/admin models/settings page for configuring template-related options.
+- `safe/Réglage/semestre.html` – SAFE/admin work season or semester settings page.
+- `safe/Synthèse Global/Balance.html` – SAFE/admin global balance summary page by category.
+- `safe/Synthèse Global/Livraison Fournisseurs.html` – SAFE/admin global synthesis of supplier-to-MSM-MEDIAS deliveries.
+- `safe/Synthèse Global/Livraison Rep.html` – SAFE/admin global synthesis of representative deliveries.
+- `safe/Synthèse Global/depot_global.html` – SAFE/admin global depot status summary page.
+- `safe/Synthèse Global/remb_globale.html` – SAFE/admin global representative reimbursement synthesis page.
+- `safe/Synthèse Global/remb_globale_imp.html` – SAFE/admin global supplier reimbursement synthesis page.
+- `safe/Synthèse Global/vente.html` – SAFE/admin global sales status page by category.
+- `safe/Traçabilité/Clients.html` – SAFE/admin traceability page linking representatives to clients.
+- `safe/Traçabilité/bl-client.html` – SAFE/admin traceability page for client delivery notes.
+- `safe/Traçabilité/remb-client.html` – SAFE/admin traceability page for client reimbursements.
+- `safe/Traçabilité/synthese-client.html` – SAFE/admin client traceability synthesis page.
+- `safe/livres/categories.html` – SAFE/admin category list page for book categories.
+- `safe/livres/livres.html` – SAFE/admin book list page with book metadata and action controls.
+- `safe/representant/BL-representant.html` – SAFE/admin representative BL list page showing delivery notes and status indicators.
+- `safe/representant/BL-representant/Imprimer.html` – SAFE/admin printable representative BL page.
+- `safe/representant/BL-representant/details.html` – SAFE/admin representative BL details page listing BL line items.
+- `safe/representant/Remboursement.html` – SAFE/admin representative reimbursement page with credit, advance, status, and table rows.
+- `safe/representant/cahier_texte.html` – SAFE/admin cahier de texte request summary page with totals by type.
+- `safe/representant/carte_visite.html` – SAFE/admin business card order list and detail page.
+- `safe/representant/depot.html` – SAFE/admin representative depot page listing MSM-MEDIAS depot quantities and statuses.
+- `safe/representant/fact-rep.html` – SAFE/admin representative invoice summary page for MSM-MEDIAS.
+- `safe/representant/factures.html` – SAFE/admin representative invoice quantities page.
+- `safe/representant/remb-fact.html` – SAFE/admin invoice reimbursement page.
+- `safe/representant/rep-synthese-remb.html` – SAFE/admin representative reimbursement synthesis page.
+- `safe/representant/rep-synthese.html` – SAFE/admin representative delivery/stock synthesis page.
+- `safe/representant/representant.html` – SAFE/admin representative list page with representative rows and action controls.
