@@ -1,5 +1,6 @@
 ## Root
 - `login.html` – Login/splash page for Ajial with the main branding and sign-in form.
+- `database_structure.sql` – MySQL schema and sample seed data for Ajial users, roles, representatives, clients, deliveries, refunds, invoices, books, suppliers, and support requests.
 - `ultra files description.md` – Repository inventory that summarizes the purpose of each static file.
 
 ## admin/
@@ -74,3 +75,63 @@
 - `safe/representant/rep-synthese-remb.html` – SAFE/admin representative reimbursement synthesis page.
 - `safe/representant/rep-synthese.html` – SAFE/admin representative delivery/stock synthesis page.
 - `safe/representant/representant.html` – SAFE/admin representative list page with representative rows and action controls.
+
+## php_blueprint/
+- `php_blueprint/_shared/bootstrap.php` – Shared PDO, escaping, session, query, and rendering helpers used by every dynamic PHP blueprint page.
+- `php_blueprint/representant/accueil.php` – Dynamic PHP blueprint for the Accueil représentant page, using prepared PDO queries and escaped output to reproduce `representant/Accueil.html` from database data.
+- `php_blueprint/representant/bon_de_livraison/bl.php` – Dynamic PHP blueprint for the Bl page, using prepared PDO queries and escaped output to reproduce `representant/bon de livraison/BL.html` from database data.
+- `php_blueprint/representant/bon_de_livraison/renboursement.php` – Dynamic PHP blueprint for the Renboursement page, using prepared PDO queries and escaped output to reproduce `representant/bon de livraison/Renboursement.html` from database data.
+- `php_blueprint/representant/bon_de_livraison/synthese_bl_rep.php` – Dynamic PHP blueprint for the Synthese Bl Rep page, using prepared PDO queries and escaped output to reproduce `representant/bon de livraison/synthese-bl-rep.html` from database data.
+- `php_blueprint/representant/cahier_de_texte/demande_cahier.php` – Dynamic PHP blueprint for the Demande Cahier page, using prepared PDO queries and escaped output to reproduce `representant/cahier de texte/demande_cahier.html` from database data.
+- `php_blueprint/representant/cahier_de_texte/suivi_cahier.php` – Dynamic PHP blueprint for the Suivi Cahier page, using prepared PDO queries and escaped output to reproduce `representant/cahier de texte/suivi_cahier.html` from database data.
+- `php_blueprint/representant/carte_de_visite_and_chevalt/demande_carte.php` – Dynamic PHP blueprint for the Demande Carte page, using prepared PDO queries and escaped output to reproduce `representant/carte de visite & chevalt/demande_carte.html` from database data.
+- `php_blueprint/representant/carte_de_visite_and_chevalt/suivi_cartes.php` – Dynamic PHP blueprint for the Suivi Cartes page, using prepared PDO queries and escaped output to reproduce `representant/carte de visite & chevalt/suivi_cartes.html` from database data.
+- `php_blueprint/representant/client/bl_client.php` – Dynamic PHP blueprint for the Bl Client page, using prepared PDO queries and escaped output to reproduce `representant/client/bl-client.html` from database data.
+- `php_blueprint/representant/client/client.php` – Dynamic PHP blueprint for the Client page, using prepared PDO queries and escaped output to reproduce `representant/client/client.html` from database data.
+- `php_blueprint/representant/client/historique.php` – Dynamic PHP blueprint for the Historique page, using prepared PDO queries and escaped output to reproduce `representant/client/Historique.html` from database data.
+- `php_blueprint/representant/client/remb_client.php` – Dynamic PHP blueprint for the Remb Client page, using prepared PDO queries and escaped output to reproduce `representant/client/remb-client.html` from database data.
+- `php_blueprint/representant/client/synthese_bl.php` – Dynamic PHP blueprint for the Synthese Bl page, using prepared PDO queries and escaped output to reproduce `representant/client/synthese-bl.html` from database data.
+- `php_blueprint/representant/client/synthese_global/livraison_global.php` – Dynamic PHP blueprint for the Livraison Global page, using prepared PDO queries and escaped output to reproduce `representant/client/Synthèse Global/Livraison-global.html` from database data.
+- `php_blueprint/representant/client/synthese_global/remb_global.php` – Dynamic PHP blueprint for the Remb Global page, using prepared PDO queries and escaped output to reproduce `representant/client/Synthèse Global/remb-global.html` from database data.
+- `php_blueprint/representant/client/synthese_remb.php` – Dynamic PHP blueprint for the Synthese Remb page, using prepared PDO queries and escaped output to reproduce `representant/client/synthese-remb.html` from database data.
+- `php_blueprint/representant/depot.php` – Dynamic PHP blueprint for the Depot page, using prepared PDO queries and escaped output to reproduce `representant/depot.html` from database data.
+- `php_blueprint/representant/facture/facturation_msm.php` – Dynamic PHP blueprint for the Facturation Msm page, using prepared PDO queries and escaped output to reproduce `representant/facture/facturation-msm.html` from database data.
+- `php_blueprint/representant/facture/facturation_wataniya.php` – Dynamic PHP blueprint for the Facturation Wataniya page, using prepared PDO queries and escaped output to reproduce `representant/facture/facturation-wataniya.html` from database data.
+- `php_blueprint/representant/profil.php` – Dynamic PHP blueprint for the Profil représentant page, using prepared PDO queries and escaped output to reproduce `representant/profil.html` from database data.
+- `php_blueprint/representant/robot.php` – Dynamic PHP blueprint for the Robot page, using prepared PDO queries and escaped output to reproduce `representant/Robot.html` from database data.
+- `php_blueprint/safe/accueil.php` – Dynamic PHP blueprint for the Accueil SAFE page, using prepared PDO queries and escaped output to reproduce `safe/Accueil.html` from database data.
+- `php_blueprint/safe/emailing/emailing.php` – Dynamic PHP blueprint for the Emailing page, using prepared PDO queries and escaped output to reproduce `safe/Emailing/emailing.html` from database data.
+- `php_blueprint/safe/emailing/invitation.php` – Dynamic PHP blueprint for the Invitation page, using prepared PDO queries and escaped output to reproduce `safe/Emailing/invitation.html` from database data.
+- `php_blueprint/safe/fournisseurs/imp_bl.php` – Dynamic PHP blueprint for the Imp Bl page, using prepared PDO queries and escaped output to reproduce `safe/Fournisseurs/imp-bl.html` from database data.
+- `php_blueprint/safe/fournisseurs/imp_remb.php` – Dynamic PHP blueprint for the Imp Remb page, using prepared PDO queries and escaped output to reproduce `safe/Fournisseurs/imp-remb.html` from database data.
+- `php_blueprint/safe/fournisseurs/imprimeurs.php` – Dynamic PHP blueprint for the Imprimeurs page, using prepared PDO queries and escaped output to reproduce `safe/Fournisseurs/imprimeurs.html` from database data.
+- `php_blueprint/safe/livres/categories.php` – Dynamic PHP blueprint for the Categories page, using prepared PDO queries and escaped output to reproduce `safe/livres/categories.html` from database data.
+- `php_blueprint/safe/livres/list.php` – Dynamic PHP blueprint for the Livres page, using prepared PDO queries and escaped output to reproduce `safe/livres/livres.html` from database data.
+- `php_blueprint/safe/reglage/modeles.php` – Dynamic PHP blueprint for the Modeles page, using prepared PDO queries and escaped output to reproduce `safe/Réglage/modeles.html` from database data.
+- `php_blueprint/safe/reglage/peid_facture.php` – Dynamic PHP blueprint for the Peid Facture page, using prepared PDO queries and escaped output to reproduce `safe/Réglage/Peid-facture.html` from database data.
+- `php_blueprint/safe/reglage/semestre.php` – Dynamic PHP blueprint for the Semestre page, using prepared PDO queries and escaped output to reproduce `safe/Réglage/semestre.html` from database data.
+- `php_blueprint/safe/representant/bl_representant/details.php` – Dynamic PHP blueprint for the Details page, using prepared PDO queries and escaped output to reproduce `safe/representant/BL-representant/details.html` from database data.
+- `php_blueprint/safe/representant/bl_representant/imprimer.php` – Dynamic PHP blueprint for the Imprimer page, using prepared PDO queries and escaped output to reproduce `safe/representant/BL-representant/Imprimer.html` from database data.
+- `php_blueprint/safe/representant/bl_representant.php` – Dynamic PHP blueprint for the Bl Representant page, using prepared PDO queries and escaped output to reproduce `safe/representant/BL-representant.html` from database data.
+- `php_blueprint/safe/representant/cahier_texte.php` – Dynamic PHP blueprint for the Cahier Texte page, using prepared PDO queries and escaped output to reproduce `safe/representant/cahier_texte.html` from database data.
+- `php_blueprint/safe/representant/carte_visite.php` – Dynamic PHP blueprint for the Carte Visite page, using prepared PDO queries and escaped output to reproduce `safe/representant/carte_visite.html` from database data.
+- `php_blueprint/safe/representant/depot.php` – Dynamic PHP blueprint for the Depot page, using prepared PDO queries and escaped output to reproduce `safe/representant/depot.html` from database data.
+- `php_blueprint/safe/representant/fact_rep.php` – Dynamic PHP blueprint for the Fact Rep page, using prepared PDO queries and escaped output to reproduce `safe/representant/fact-rep.html` from database data.
+- `php_blueprint/safe/representant/factures.php` – Dynamic PHP blueprint for the Factures page, using prepared PDO queries and escaped output to reproduce `safe/representant/factures.html` from database data.
+- `php_blueprint/safe/representant/list.php` – Dynamic PHP blueprint for the Representant page, using prepared PDO queries and escaped output to reproduce `safe/representant/representant.html` from database data.
+- `php_blueprint/safe/representant/remb_fact.php` – Dynamic PHP blueprint for the Remb Fact page, using prepared PDO queries and escaped output to reproduce `safe/representant/remb-fact.html` from database data.
+- `php_blueprint/safe/representant/remboursement.php` – Dynamic PHP blueprint for the Remboursement page, using prepared PDO queries and escaped output to reproduce `safe/representant/Remboursement.html` from database data.
+- `php_blueprint/safe/representant/rep_synthese.php` – Dynamic PHP blueprint for the Rep Synthese page, using prepared PDO queries and escaped output to reproduce `safe/representant/rep-synthese.html` from database data.
+- `php_blueprint/safe/representant/rep_synthese_remb.php` – Dynamic PHP blueprint for the Rep Synthese Remb page, using prepared PDO queries and escaped output to reproduce `safe/representant/rep-synthese-remb.html` from database data.
+- `php_blueprint/safe/robot.php` – Dynamic PHP blueprint for the Robot page, using prepared PDO queries and escaped output to reproduce `safe/Robot.html` from database data.
+- `php_blueprint/safe/synthese_global/balance.php` – Dynamic PHP blueprint for the Balance page, using prepared PDO queries and escaped output to reproduce `safe/Synthèse Global/Balance.html` from database data.
+- `php_blueprint/safe/synthese_global/depot_global.php` – Dynamic PHP blueprint for the Depot Global page, using prepared PDO queries and escaped output to reproduce `safe/Synthèse Global/depot_global.html` from database data.
+- `php_blueprint/safe/synthese_global/livraison_fournisseurs.php` – Dynamic PHP blueprint for the Livraison Fournisseurs page, using prepared PDO queries and escaped output to reproduce `safe/Synthèse Global/Livraison Fournisseurs.html` from database data.
+- `php_blueprint/safe/synthese_global/livraison_rep.php` – Dynamic PHP blueprint for the Livraison Rep page, using prepared PDO queries and escaped output to reproduce `safe/Synthèse Global/Livraison Rep.html` from database data.
+- `php_blueprint/safe/synthese_global/remb_globale.php` – Dynamic PHP blueprint for the Remb Globale page, using prepared PDO queries and escaped output to reproduce `safe/Synthèse Global/remb_globale.html` from database data.
+- `php_blueprint/safe/synthese_global/remb_globale_imp.php` – Dynamic PHP blueprint for the Remb Globale Imp page, using prepared PDO queries and escaped output to reproduce `safe/Synthèse Global/remb_globale_imp.html` from database data.
+- `php_blueprint/safe/synthese_global/vente.php` – Dynamic PHP blueprint for the Vente page, using prepared PDO queries and escaped output to reproduce `safe/Synthèse Global/vente.html` from database data.
+- `php_blueprint/safe/tracabilite/bl_client.php` – Dynamic PHP blueprint for the Bl Client page, using prepared PDO queries and escaped output to reproduce `safe/Traçabilité/bl-client.html` from database data.
+- `php_blueprint/safe/tracabilite/clients.php` – Dynamic PHP blueprint for the Clients page, using prepared PDO queries and escaped output to reproduce `safe/Traçabilité/Clients.html` from database data.
+- `php_blueprint/safe/tracabilite/remb_client.php` – Dynamic PHP blueprint for the Remb Client page, using prepared PDO queries and escaped output to reproduce `safe/Traçabilité/remb-client.html` from database data.
+- `php_blueprint/safe/tracabilite/synthese_client.php` – Dynamic PHP blueprint for the Synthese Client page, using prepared PDO queries and escaped output to reproduce `safe/Traçabilité/synthese-client.html` from database data.
