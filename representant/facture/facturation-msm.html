@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Représentant</title>
+
+  <link rel="shortcut icon" href="images/user-log-in.png">
+
+
+
+
+
+
+
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link href='http://fonts.googleapis.com/css?family=Raleway:100,900,800,700,600,500,400,300,200' rel='stylesheet'
+    type='text/css'><!-- Google Fonts -->
+
+
+
+  <!-- Styles -->
+
+  <link rel="stylesheet" href="../admin/css/bootstrap.css" type="text/css" /><!-- Bootstrap -->
+
+  <link href="../admin/css/jquery.mCustomScrollbar.css" rel="stylesheet" /><!-- Custom Scroll Bar -->
+
+  <link rel="stylesheet" href="../admin/font-awesome/css/font-awesome.css" type="text/css" /><!-- Font Awesome -->
+
+  <link rel="stylesheet" href="../admin/css/style.css" type="text/css" /><!-- Style -->
+
+
+
+  <link rel="stylesheet" href="../admin/css/responsive.css" type="text/css" /><!-- Responsive Style -->
+
+
+
+  <!-- Script -->
+
+  <script src="../admin/js/ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><!-- Jquery -->
+
+  <script type="text/javascript" src="../admin/js/bootstrap.js"></script><!-- Bootstrap -->
+
+  <script type="text/javascript" src="../admin/js/script.js"></script><!-- Script -->
+  <style type="text/css">
+    .content-articles {
+      clear: both;
+      float: none;
+    }
+
+    .content-articles .cat-accordian {
+      margin-bottom: 10px;
+    }
+
+    .content-articles .cat-accordian .titre-cat {
+      background: #31BEEB;
+      padding: 10px;
+      color: #fff;
+      font-family: arial;
+      font-weight: bold;
+      border-radius: 2px;
+      cursor: pointer;
+
+    }
+
+    .content-articles .cat-accordian .content-cat {
+      padding: 10px;
+      background: #eee;
+      border: 1px solid #ccc;
+      border-top: 0;
+      display: table;
+      display: none;
+    }
+
+    .content-articles .cat-accordian .content-cat>div {
+      display: table;
+      width: 100%;
+    }
+
+    .content-articles .cat-accordian .content-cat .article {
+      display: table-row;
+      width: 100%;
+
+    }
+
+    .content-articles .cat-accordian .content-cat .article>div {
+      display: table-cell;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .content-articles .cat-accordian .content-cat .article .qte-article input {
+      display: none;
+      height: 37px !important;
+      margin-top: -4px !important;
+      text-align: right !important;
+      font-size: 18px !important;
+      padding-right: 11px !important;
+    }
+
+    .content-articles .cat-accordian .content-cat .article .titre-article input {
+      display: none;
+    }
+
+    .content-articles .cat-accordian .content-cat .article .titre-article {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      float: left;
+      width: 80%;
+      cursor: pointer;
+    }
+
+    .content-articles .cat-accordian .content-cat .article .titre-article.article-checked {
+      background: #0A8A0A;
+      color: #fff;
+      border: 1px solid #0A8A0A;
+    }
+
+    .content-articles .cat-accordian .content-cat .article .qte-article {
+      width: 20%;
+      float: left;
+      padding: 5px;
+    }
+
+    button.btn.green.btn-submit {
+      display: block;
+      margin: 0 auto;
+      padding: 11px;
+      width: 200px;
+      margin-top: 50px;
+      font-size: 17px;
+    }
+
+    table.table.table-striped.table-bordered.article-selected {
+      width: 400px;
+      margin: 0 auto;
+      float: none;
+      margin-top: 40px;
+      display: none;
+    }
+
+    .remise-article select {
+      display: none;
+      width: 100% !important;
+      margin-bottom: 0 !important;
+      margin-top: -23px !important;
+      padding: 9px 0 !important;
+      height: 36px !important;
+    }
+
+    .remise-article {
+      width: 10%;
+      display: none;
+    }
+  </style>
+  <script type="text/javascript">
+
+    function supp() {
+
+      if (confirm('voullez vous vraiment supprimez cette Facture ?')) return true;
+
+      else return false;
+
+    }
+
+    function valider(f) {
+      var test = 1;
+      for (var i = 1; i <= 10; i++) {
+        livre = document.getElementById('livre' + i);
+        value = livre.options[livre.selectedIndex].value;
+
+        if (value == '-') {
+          livre.style.backgroundColor = "#FFC8C8";
+          test *= 0;
+        }
+      };
+
+      if (test == 1) {
+        $('.btn-submit, .btn-reset').attr("disabled", "disabled");
+        return true;
+      }
+      else {
+        alert('Il faut choisir un article pas une categorie !')
+        return false;
+      }
+
+
+
+    }
+
+  </script>
+
+
+
+
+
+</head>
+
+<body style="width:100%;">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="wrapper">
+
+    <header>
+
+      <div class="logo">
+
+        <img src="images/logo.png" alt="" />
+
+      </div><!-- Logo -->
+
+      <div class="welcome-user">
+
+        <!-- <img src="images/user.png" alt=""/> -->
+
+        <span></span>
+
+
+
+      </div>
+
+      <div class="side-navigation">
+        <div class="clear"></div>
+        <ul>
+          <li><a href="./?page=Accueil"><i class="icon-home"></i>Accueil</a></li>
+
+          <li><a><i class="icon-money"></i> Bon de livraison <br />
+              <b>Warning</b>: Undefined variable $notifBl in
+              <b>/home/ajialmedias/public_html/dev/representant/menu1.php</b> on line <b>36</b><br />
+            </a>
+            <ul>
+              <li><a href="./?page=BL"><i class="icon-file-text-alt"></i>BL <br />
+                  <b>Warning</b>: Undefined variable $notifBl in
+                  <b>/home/ajialmedias/public_html/dev/representant/menu1.php</b> on line <b>38</b><br />
+                </a></a></li>
+              <li><a href="./?page=Renboursement"><i class="icon-money"></i>Remboursement</a></li>
+              <li><a href="./?page=synthese-bl-rep"><i class="icon-money"></i>Synthèse BL
+                </a></li>
+            </ul>
+          </li>
+
+          <li><a><i class="icon-file-text-alt"></i>Factures</a>
+            <ul>
+              <li><a href="./?page=facturation-msm" title=""><i class="icon-angle-right"></i>Facture MSM-MEDIAS</a></li>
+              <li><a href="./?page=facturation-wataniya" title=""><i class="icon-angle-right"></i>Facture Wataniya</a>
+              </li>
+              <!-- <li><a href="./?page=remb-fact"><i class="icon-money"></i>Rembourser une facture</a></li> -->
+            </ul>
+          </li>
+
+          <li><a title=""><i class="icon-user"></i>Clients</a>
+            <ul>
+              <li><a href="./?page=client" title=""><i class="icon-angle-right"></i>Ajouter client</a></li>
+              <li><a href="./?page=bl-client" title=""><i class="icon-angle-right"></i>Saisir un BL</a></li>
+              <li><a href="./?page=remb-client" title=""><i class="icon-angle-right"></i>Remboursement</a></li>
+              <li><a href="./?page=synthese-bl" title=""><i class="icon-angle-right"></i>Synthèse BL</a></li>
+              <li><a href="./?page=synthese-remb" title=""><i class="icon-angle-right"></i>Synthèse Remboursemnet</a>
+              </li>
+              <li><a href="./?page=Historique" title=""><i class="icon-angle-right"></i>Historique</a></li>
+              <li><a><i class="icon-angle-right"></i>Synthèse Global</a>
+                <ul>
+                  <li><a href="./?page=Livraison-global" title=""><i class="icon-angle-right"></i>Livraisons clients</a>
+                  </li>
+                  <li><a href="./?page=remb-global" title=""><i class="icon-angle-right"></i>Remboursements clients</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a title="" href="./?page=depot"><i class="icon-print"></i>Dépôt</a></li>
+          <li><a title=""><i class="icon-book"></i>Cahier de texte</a>
+            <ul>
+              <li><a href="./?page=demande_cahier" title=""><i class="icon-angle-right"></i>Commander un cahier</a></li>
+              <li><a href="./?page=suivi_cahier" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a title=""><i class="icon-money"></i>Cartes de visite & Chevalet</a>
+            <ul>
+              <li><a href="./?page=demande_carte" title=""><i class="icon-angle-right"></i>Faire une commande</a></li>
+              <li><a href="./?page=suivi_cartes" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a href="./?page=Robot"><i class="icon-gear"></i>Robots</a></li>
+          <!-- <li><a href="./?page=TawassolApp"><i class="icon-gear"></i>TawassolApp</a></li>  -->
+          <li><a href="./?page=Profile"><i class="icon-user"></i>Profil</a></li>
+          </li>
+          <li><a title=""><i class="icon-cogs"></i>SAISON : 2026 / 2027 </a></li>
+          <li><a href="/login.html" title=""><i class="icon-off"></i>Déconnexion</a></li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <a class="slide-up-btn"><i class="icon-align-justify"></i></a>
+
+    </header><!-- Header End -->
+
+
+
+
+
+    <section class="main-section">
+
+      <div class="responsive-logo">
+
+        <img src="images/logo.png" alt="" />
+
+      </div>
+
+      <div class="responsive-menu">
+
+        <div class="responsive-menu-dropdown">
+
+          <a title="" class="red">MENU <i class="icon-align-justify"></i></a>
+
+        </div>
+
+        <ul>
+          <li><a href="./?page=Accueil"><i class="icon-home"></i>Accueil</a></li>
+          <li><a href="./?page=BL"><i class="icon-file-text-alt"></i>BL
+            </a>
+          </li>
+          <li><a href="./?page=Renboursement"><i class="icon-money"></i>Remboursement</a></li>
+          <li><a href="./?page=synthese-bl-rep"><i class="icon-money"></i>Synthèse BL
+            </a></li>
+          <li><a><i class="icon-file-text-alt"></i>Demander une facture</a>
+            <ul>
+              <li><a href="./?page=facturation-msm" title=""><i class="icon-angle-right"></i>Facture MSM-MEDIAS</a></li>
+              <li><a href="./?page=facturation-wataniya" title=""><i class="icon-angle-right"></i>Facture Wataniya</a>
+              </li>
+            </ul>
+          </li>
+          <!-- <li><a href="./?page=remb-fact"><i class="icon-money"></i>Rembourser une facture</a></li> -->
+          <li><a title=""><i class="icon-print"></i>Clients</a>
+            <ul>
+              <li><a href="./?page=client" title=""><i class="icon-angle-right"></i>Ajouter client</a></li>
+              <li><a href="./?page=bl-client" title=""><i class="icon-angle-right"></i>Saisir un BL</a></li>
+              <li><a href="./?page=remb-client" title=""><i class="icon-angle-right"></i>Remboursement</a></li>
+              <li><a href="./?page=synthese-bl" title=""><i class="icon-angle-right"></i>Synthèse BL</a></li>
+              <li><a href="./?page=synthese-remb" title=""><i class="icon-angle-right"></i>Synthèse Remboursemnet</a>
+              </li>
+              <li><a href="./?page=Historique" title=""><i class="icon-angle-right"></i>Historique</a></li>
+            </ul>
+          </li>
+
+        </ul>
+        <ul>
+          <li><a><i class="icon-angle-right"></i>Synthèse Global <em style="font-size:11px;">(Clients)</em></a>
+            <ul>
+              <li><a href="./?page=Livraison-global" title=""><i class="icon-angle-right"></i>Livraisons clients</a>
+              </li>
+              <li><a href="./?page=remb-global" title=""><i class="icon-angle-right"></i>Remboursements clients</a></li>
+            </ul>
+          </li>
+          <li><a title="" href="./?page=depot"><i class="icon-print"></i>Dépôt</a></li>
+          <li><a title=""><i class="icon-book"></i>Cahier de texte</a>
+            <ul>
+              <li><a href="./?page=demande_cahier" title=""><i class="icon-angle-right"></i>Commander un cahier</a></li>
+              <li><a href="./?page=suivi_cahier" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a title=""><i class="icon-money"></i>Carte de visite & Chevalet</a>
+            <ul>
+              <li><a href="./?page=demande_carte" title=""><i class="icon-angle-right"></i>Faire une commande</a></li>
+              <li><a href="./?page=suivi_cartes" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a href="./?page=Profile"><i class="icon-user"></i>Profil</a></li>
+          </li>
+          <li><a title="" style='background: #0d6554; cursor: default; color: #fff;'><i class="icon-cogs"></i>SAISON :
+              2026 / 2027 </a></li>
+          <li><a href="/login.html" title=""><i class="icon-off"></i>Déconnexion</a></li>
+
+        </ul>
+
+
+      </div>
+
+
+      <!-- ****************************************fin de menu **************************************** -->
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="main-bg">
+
+            <div class="top-stats">
+
+
+
+              <div class="top-stats-icons">
+
+                <a href="../logout.php" title="Déconnexion"><i class="icon-off"></i></a>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="breadcrumbs-notify">
+
+              <a href="./?page=Accueil" title="">accueil /</a> <a title="">Demander une facture /</a> <a
+                title="">Facture MSM-MEDIAS</a>
+
+            </div>
+
+
+
+            <div class="heading-buttons-sec">
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- *********************************content**************************************			 -->
+
+
+
+
+
+
+
+
+
+
+
+            <div class="body-sec">
+
+
+
+
+
+              <div class="col-md-12">
+
+                <div class="widget-body">
+
+                  <div class="widget-heading blue">
+
+                    <i class="icon-book"></i>
+                    <h3 class="pull-left">Liste des factures MSM-MEDIAS</h3>
+
+
+
+                  </div>
+
+                  <div class="widget-sec">
+
+                    <div id="contact">
+
+
+
+                      <table id="stream_table" class="table table-striped table-bordered">
+
+
+
+
+
+                        <thead>
+
+                          <tr>
+
+
+
+
+
+
+
+                            <th>Date</th>
+
+                            <th> Client</th>
+                            <th> ICE</th>
+
+                            <th> Montant (DH)</th>
+
+                            <th> Remise (DH)</th>
+
+                            <th> Net (DH)</th>
+
+                            <th> Détails</th>
+
+                            <!-- <th> Modifier</th> -->
+
+                            <th> Supprimer</th>
+
+                          </tr>
+
+                        </thead>
+
+                        <tbody>
+
+
+
+
+                        </tbody>
+
+
+
+                      </table> <br>
+
+
+
+                      <br>
+
+
+
+                    </div>
+
+
+
+
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="col-md-12">
+
+                <div class="widget-body">
+
+                  <div class="widget-heading green">
+
+                    <i class="icon-book"></i>
+                    <h3 class="pull-left">Demander une facture</h3>
+
+
+
+                  </div>
+
+                  <div class="widget-sec">
+
+                    <div id="contact">
+
+
+
+                      <form action='add_fact.php' method='post' id='form' onsubmit="return valider(this);">
+
+                        <table>
+                          <tr style='border-bottom:0;'>
+                            <td rowspan=68px style='width: 60%; vertical-align: top;'><img src='images/logo1.png'
+                                style='margin-right:20px;'></td><br>
+                          <tr style='border-bottom:0'>
+                            <td>Date : </td>
+                            <td><input type='date' style='width:300px' name='date' required>
+                            <td>
+                          </tr>
+                          <tr style='border-bottom:0'>
+
+                            <td>Ville : </td>
+                            <td><input type='text' style='width:300px' name='ville' required></td>
+                          </tr>
+                          <tr style='border-bottom:0'>
+                            <td>Client : </td>
+                            <td><input type='text' style='width:300px' name='client' required> </td>
+                          </tr>
+                          <tr style='border-bottom:0'>
+                            <td>ICE : </td>
+                            <td><input type='text' style='width:300px' name='ice' required> </td>
+                          </tr>
+                          <tr style='border-bottom:0'>
+                            <td>Adresse : </td>
+                            <td><input type='text' style='width:300px' name='adresse' required> </td>
+                          </tr>
+                          <tr style='border-bottom:0'>
+                            <td>Tél / Fax : </td>
+                            <td><input type='text' style='width:300px' name='tel'> </td>
+
+                          </tr>
+
+                        </table><br>
+
+                        <h2 style='text-align:center;'> FACTURE N° : .../
+
+                          2026
+                        </h2>
+
+                        <br>
+
+
+
+                        <div class="content-articles">
+                          <div class="cat-accordian">
+                            <div class="titre-cat">PRIMAIRE </div>
+                            <div class="content-cat">
+                              <div>
+                                <div class="article" data-nb="1">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 1</span>
+                                    <input type="checkbox" name="title[]" value="1">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input Type="text" name="qte_1" placeholder="Qté">
+                                  </div>
+                                  <div class="remise-article">
+
+                                    <select name="remise_1" id="select">
+                                      <option value="0">0%</option>
+
+                                      <option value="1">1%</option>
+
+                                      <option value="2">2%</option>
+
+                                      <option value="3">3%</option>
+
+                                      <option value="4">4%</option>
+
+                                      <option value="5">5%</option>
+
+                                      <option value="6">6%</option>
+
+                                      <option value="7">7%</option>
+
+                                      <option value="8">8%</option>
+
+                                      <option value="9">9%</option>
+
+                                      <option value="10">10%</option>
+
+                                      <option value="11">11%</option>
+
+                                      <option value="12">12%</option>
+
+                                      <option value="13">13%</option>
+
+                                      <option value="14">14%</option>
+
+                                      <option value="15">15%</option>
+
+                                      <option value="16">16%</option>
+
+                                      <option value="17">17%</option>
+
+                                      <option value="18">18%</option>
+
+                                      <option value="19">19%</option>
+
+                                      <option value="20">20%</option>
+
+                                      <option value="21">21%</option>
+
+                                      <option value="22">22%</option>
+
+                                      <option value="23">23%</option>
+
+                                      <option value="24">24%</option>
+
+                                      <option value="25" selected>25%</option>
+
+                                      <option value="26">26%</option>
+
+                                      <option value="27">27%</option>
+
+                                      <option value="28">28%</option>
+
+                                      <option value="29">29%</option>
+
+                                      <option value="30">30%</option>
+
+                                      <option value="31">31%</option>
+
+                                      <option value="32">32%</option>
+
+                                      <option value="33">33%</option>
+
+                                      <option value="34">34%</option>
+
+                                      <option value="35">35%</option>
+
+                                      <option value="36">36%</option>
+
+                                      <option value="37">37%</option>
+
+                                      <option value="38">38%</option>
+
+                                      <option value="39">39%</option>
+
+                                      <option value="40">40%</option>
+
+                                      <option value="41">41%</option>
+
+                                      <option value="42">42%</option>
+
+                                      <option value="43">43%</option>
+
+                                      <option value="44">44%</option>
+
+                                      <option value="45">45%</option>
+
+                                      <option value="46">46%</option>
+
+                                      <option value="47">47%</option>
+
+                                      <option value="48">48%</option>
+
+                                      <option value="49">49%</option>
+
+                                      <option value="50">50%</option>
+
+
+                                    </select>
+
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="2">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 2</span>
+                                    <input type="checkbox" name="title[]" value="2">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input Type="text" name="qte_2" placeholder="Qté">
+                                  </div>
+                                  <div class="remise-article">
+
+                                    <select name="remise_2" id="select">
+                                      <option value="0">0%</option>
+
+                                      <option value="1">1%</option>
+
+                                      <option value="2">2%</option>
+
+                                      <option value="3">3%</option>
+
+                                      <option value="4">4%</option>
+
+                                      <option value="5">5%</option>
+
+                                      <option value="6">6%</option>
+
+                                      <option value="7">7%</option>
+
+                                      <option value="8">8%</option>
+
+                                      <option value="9">9%</option>
+
+                                      <option value="10">10%</option>
+
+                                      <option value="11">11%</option>
+
+                                      <option value="12">12%</option>
+
+                                      <option value="13">13%</option>
+
+                                      <option value="14">14%</option>
+
+                                      <option value="15">15%</option>
+
+                                      <option value="16">16%</option>
+
+                                      <option value="17">17%</option>
+
+                                      <option value="18">18%</option>
+
+                                      <option value="19">19%</option>
+
+                                      <option value="20">20%</option>
+
+                                      <option value="21">21%</option>
+
+                                      <option value="22">22%</option>
+
+                                      <option value="23">23%</option>
+
+                                      <option value="24">24%</option>
+
+                                      <option value="25" selected>25%</option>
+
+                                      <option value="26">26%</option>
+
+                                      <option value="27">27%</option>
+
+                                      <option value="28">28%</option>
+
+                                      <option value="29">29%</option>
+
+                                      <option value="30">30%</option>
+
+                                      <option value="31">31%</option>
+
+                                      <option value="32">32%</option>
+
+                                      <option value="33">33%</option>
+
+                                      <option value="34">34%</option>
+
+                                      <option value="35">35%</option>
+
+                                      <option value="36">36%</option>
+
+                                      <option value="37">37%</option>
+
+                                      <option value="38">38%</option>
+
+                                      <option value="39">39%</option>
+
+                                      <option value="40">40%</option>
+
+                                      <option value="41">41%</option>
+
+                                      <option value="42">42%</option>
+
+                                      <option value="43">43%</option>
+
+                                      <option value="44">44%</option>
+
+                                      <option value="45">45%</option>
+
+                                      <option value="46">46%</option>
+
+                                      <option value="47">47%</option>
+
+                                      <option value="48">48%</option>
+
+                                      <option value="49">49%</option>
+
+                                      <option value="50">50%</option>
+
+
+                                    </select>
+
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="3">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 3</span>
+                                    <input type="checkbox" name="title[]" value="3">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input Type="text" name="qte_3" placeholder="Qté">
+                                  </div>
+                                  <div class="remise-article">
+
+                                    <select name="remise_3" id="select">
+                                      <option value="0">0%</option>
+
+                                      <option value="1">1%</option>
+
+                                      <option value="2">2%</option>
+
+                                      <option value="3">3%</option>
+
+                                      <option value="4">4%</option>
+
+                                      <option value="5">5%</option>
+
+                                      <option value="6">6%</option>
+
+                                      <option value="7">7%</option>
+
+                                      <option value="8">8%</option>
+
+                                      <option value="9">9%</option>
+
+                                      <option value="10">10%</option>
+
+                                      <option value="11">11%</option>
+
+                                      <option value="12">12%</option>
+
+                                      <option value="13">13%</option>
+
+                                      <option value="14">14%</option>
+
+                                      <option value="15">15%</option>
+
+                                      <option value="16">16%</option>
+
+                                      <option value="17">17%</option>
+
+                                      <option value="18">18%</option>
+
+                                      <option value="19">19%</option>
+
+                                      <option value="20">20%</option>
+
+                                      <option value="21">21%</option>
+
+                                      <option value="22">22%</option>
+
+                                      <option value="23">23%</option>
+
+                                      <option value="24">24%</option>
+
+                                      <option value="25" selected>25%</option>
+
+                                      <option value="26">26%</option>
+
+                                      <option value="27">27%</option>
+
+                                      <option value="28">28%</option>
+
+                                      <option value="29">29%</option>
+
+                                      <option value="30">30%</option>
+
+                                      <option value="31">31%</option>
+
+                                      <option value="32">32%</option>
+
+                                      <option value="33">33%</option>
+
+                                      <option value="34">34%</option>
+
+                                      <option value="35">35%</option>
+
+                                      <option value="36">36%</option>
+
+                                      <option value="37">37%</option>
+
+                                      <option value="38">38%</option>
+
+                                      <option value="39">39%</option>
+
+                                      <option value="40">40%</option>
+
+                                      <option value="41">41%</option>
+
+                                      <option value="42">42%</option>
+
+                                      <option value="43">43%</option>
+
+                                      <option value="44">44%</option>
+
+                                      <option value="45">45%</option>
+
+                                      <option value="46">46%</option>
+
+                                      <option value="47">47%</option>
+
+                                      <option value="48">48%</option>
+
+                                      <option value="49">49%</option>
+
+                                      <option value="50">50%</option>
+
+
+                                    </select>
+
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="4">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 4</span>
+                                    <input type="checkbox" name="title[]" value="4">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input Type="text" name="qte_4" placeholder="Qté">
+                                  </div>
+                                  <div class="remise-article">
+
+                                    <select name="remise_4" id="select">
+                                      <option value="0">0%</option>
+
+                                      <option value="1">1%</option>
+
+                                      <option value="2">2%</option>
+
+                                      <option value="3">3%</option>
+
+                                      <option value="4">4%</option>
+
+                                      <option value="5">5%</option>
+
+                                      <option value="6">6%</option>
+
+                                      <option value="7">7%</option>
+
+                                      <option value="8">8%</option>
+
+                                      <option value="9">9%</option>
+
+                                      <option value="10">10%</option>
+
+                                      <option value="11">11%</option>
+
+                                      <option value="12">12%</option>
+
+                                      <option value="13">13%</option>
+
+                                      <option value="14">14%</option>
+
+                                      <option value="15">15%</option>
+
+                                      <option value="16">16%</option>
+
+                                      <option value="17">17%</option>
+
+                                      <option value="18">18%</option>
+
+                                      <option value="19">19%</option>
+
+                                      <option value="20">20%</option>
+
+                                      <option value="21">21%</option>
+
+                                      <option value="22">22%</option>
+
+                                      <option value="23">23%</option>
+
+                                      <option value="24">24%</option>
+
+                                      <option value="25" selected>25%</option>
+
+                                      <option value="26">26%</option>
+
+                                      <option value="27">27%</option>
+
+                                      <option value="28">28%</option>
+
+                                      <option value="29">29%</option>
+
+                                      <option value="30">30%</option>
+
+                                      <option value="31">31%</option>
+
+                                      <option value="32">32%</option>
+
+                                      <option value="33">33%</option>
+
+                                      <option value="34">34%</option>
+
+                                      <option value="35">35%</option>
+
+                                      <option value="36">36%</option>
+
+                                      <option value="37">37%</option>
+
+                                      <option value="38">38%</option>
+
+                                      <option value="39">39%</option>
+
+                                      <option value="40">40%</option>
+
+                                      <option value="41">41%</option>
+
+                                      <option value="42">42%</option>
+
+                                      <option value="43">43%</option>
+
+                                      <option value="44">44%</option>
+
+                                      <option value="45">45%</option>
+
+                                      <option value="46">46%</option>
+
+                                      <option value="47">47%</option>
+
+                                      <option value="48">48%</option>
+
+                                      <option value="49">49%</option>
+
+                                      <option value="50">50%</option>
+
+
+                                    </select>
+
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="5">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 5</span>
+                                    <input type="checkbox" name="title[]" value="5">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input Type="text" name="qte_5" placeholder="Qté">
+                                  </div>
+                                  <div class="remise-article">
+
+                                    <select name="remise_5" id="select">
+                                      <option value="0">0%</option>
+
+                                      <option value="1">1%</option>
+
+                                      <option value="2">2%</option>
+
+                                      <option value="3">3%</option>
+
+                                      <option value="4">4%</option>
+
+                                      <option value="5">5%</option>
+
+                                      <option value="6">6%</option>
+
+                                      <option value="7">7%</option>
+
+                                      <option value="8">8%</option>
+
+                                      <option value="9">9%</option>
+
+                                      <option value="10">10%</option>
+
+                                      <option value="11">11%</option>
+
+                                      <option value="12">12%</option>
+
+                                      <option value="13">13%</option>
+
+                                      <option value="14">14%</option>
+
+                                      <option value="15">15%</option>
+
+                                      <option value="16">16%</option>
+
+                                      <option value="17">17%</option>
+
+                                      <option value="18">18%</option>
+
+                                      <option value="19">19%</option>
+
+                                      <option value="20">20%</option>
+
+                                      <option value="21">21%</option>
+
+                                      <option value="22">22%</option>
+
+                                      <option value="23">23%</option>
+
+                                      <option value="24">24%</option>
+
+                                      <option value="25" selected>25%</option>
+
+                                      <option value="26">26%</option>
+
+                                      <option value="27">27%</option>
+
+                                      <option value="28">28%</option>
+
+                                      <option value="29">29%</option>
+
+                                      <option value="30">30%</option>
+
+                                      <option value="31">31%</option>
+
+                                      <option value="32">32%</option>
+
+                                      <option value="33">33%</option>
+
+                                      <option value="34">34%</option>
+
+                                      <option value="35">35%</option>
+
+                                      <option value="36">36%</option>
+
+                                      <option value="37">37%</option>
+
+                                      <option value="38">38%</option>
+
+                                      <option value="39">39%</option>
+
+                                      <option value="40">40%</option>
+
+                                      <option value="41">41%</option>
+
+                                      <option value="42">42%</option>
+
+                                      <option value="43">43%</option>
+
+                                      <option value="44">44%</option>
+
+                                      <option value="45">45%</option>
+
+                                      <option value="46">46%</option>
+
+                                      <option value="47">47%</option>
+
+                                      <option value="48">48%</option>
+
+                                      <option value="49">49%</option>
+
+                                      <option value="50">50%</option>
+
+
+                                    </select>
+
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="6">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 6</span>
+                                    <input type="checkbox" name="title[]" value="6">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input Type="text" name="qte_6" placeholder="Qté">
+                                  </div>
+                                  <div class="remise-article">
+
+                                    <select name="remise_6" id="select">
+                                      <option value="0">0%</option>
+
+                                      <option value="1">1%</option>
+
+                                      <option value="2">2%</option>
+
+                                      <option value="3">3%</option>
+
+                                      <option value="4">4%</option>
+
+                                      <option value="5">5%</option>
+
+                                      <option value="6">6%</option>
+
+                                      <option value="7">7%</option>
+
+                                      <option value="8">8%</option>
+
+                                      <option value="9">9%</option>
+
+                                      <option value="10">10%</option>
+
+                                      <option value="11">11%</option>
+
+                                      <option value="12">12%</option>
+
+                                      <option value="13">13%</option>
+
+                                      <option value="14">14%</option>
+
+                                      <option value="15">15%</option>
+
+                                      <option value="16">16%</option>
+
+                                      <option value="17">17%</option>
+
+                                      <option value="18">18%</option>
+
+                                      <option value="19">19%</option>
+
+                                      <option value="20">20%</option>
+
+                                      <option value="21">21%</option>
+
+                                      <option value="22">22%</option>
+
+                                      <option value="23">23%</option>
+
+                                      <option value="24">24%</option>
+
+                                      <option value="25" selected>25%</option>
+
+                                      <option value="26">26%</option>
+
+                                      <option value="27">27%</option>
+
+                                      <option value="28">28%</option>
+
+                                      <option value="29">29%</option>
+
+                                      <option value="30">30%</option>
+
+                                      <option value="31">31%</option>
+
+                                      <option value="32">32%</option>
+
+                                      <option value="33">33%</option>
+
+                                      <option value="34">34%</option>
+
+                                      <option value="35">35%</option>
+
+                                      <option value="36">36%</option>
+
+                                      <option value="37">37%</option>
+
+                                      <option value="38">38%</option>
+
+                                      <option value="39">39%</option>
+
+                                      <option value="40">40%</option>
+
+                                      <option value="41">41%</option>
+
+                                      <option value="42">42%</option>
+
+                                      <option value="43">43%</option>
+
+                                      <option value="44">44%</option>
+
+                                      <option value="45">45%</option>
+
+                                      <option value="46">46%</option>
+
+                                      <option value="47">47%</option>
+
+                                      <option value="48">48%</option>
+
+                                      <option value="49">49%</option>
+
+                                      <option value="50">50%</option>
+
+
+                                    </select>
+
+                                  </div>
+                                </div><!--  Fin article	 -->
+
+                              </div>
+                            </div>
+
+                          </div> <!-- Fin categorie   -->
+                          <div class="cat-accordian">
+                            <div class="titre-cat">COLLèGE</div>
+                            <div class="content-cat">
+                              <div>
+                                <div class="article" data-nb="7">
+                                  <div class="titre-article">
+                                    <span>Informatique, Robotique et Intelligence Artificielle au collège N1</span>
+                                    <input type="checkbox" name="title[]" value="7">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input Type="text" name="qte_7" placeholder="Qté">
+                                  </div>
+                                  <div class="remise-article">
+
+                                    <select name="remise_7" id="select">
+                                      <option value="0">0%</option>
+
+                                      <option value="1">1%</option>
+
+                                      <option value="2">2%</option>
+
+                                      <option value="3">3%</option>
+
+                                      <option value="4">4%</option>
+
+                                      <option value="5">5%</option>
+
+                                      <option value="6">6%</option>
+
+                                      <option value="7">7%</option>
+
+                                      <option value="8">8%</option>
+
+                                      <option value="9">9%</option>
+
+                                      <option value="10">10%</option>
+
+                                      <option value="11">11%</option>
+
+                                      <option value="12">12%</option>
+
+                                      <option value="13">13%</option>
+
+                                      <option value="14">14%</option>
+
+                                      <option value="15">15%</option>
+
+                                      <option value="16">16%</option>
+
+                                      <option value="17">17%</option>
+
+                                      <option value="18">18%</option>
+
+                                      <option value="19">19%</option>
+
+                                      <option value="20">20%</option>
+
+                                      <option value="21">21%</option>
+
+                                      <option value="22">22%</option>
+
+                                      <option value="23">23%</option>
+
+                                      <option value="24">24%</option>
+
+                                      <option value="25" selected>25%</option>
+
+                                      <option value="26">26%</option>
+
+                                      <option value="27">27%</option>
+
+                                      <option value="28">28%</option>
+
+                                      <option value="29">29%</option>
+
+                                      <option value="30">30%</option>
+
+                                      <option value="31">31%</option>
+
+                                      <option value="32">32%</option>
+
+                                      <option value="33">33%</option>
+
+                                      <option value="34">34%</option>
+
+                                      <option value="35">35%</option>
+
+                                      <option value="36">36%</option>
+
+                                      <option value="37">37%</option>
+
+                                      <option value="38">38%</option>
+
+                                      <option value="39">39%</option>
+
+                                      <option value="40">40%</option>
+
+                                      <option value="41">41%</option>
+
+                                      <option value="42">42%</option>
+
+                                      <option value="43">43%</option>
+
+                                      <option value="44">44%</option>
+
+                                      <option value="45">45%</option>
+
+                                      <option value="46">46%</option>
+
+                                      <option value="47">47%</option>
+
+                                      <option value="48">48%</option>
+
+                                      <option value="49">49%</option>
+
+                                      <option value="50">50%</option>
+
+
+                                    </select>
+
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="8">
+                                  <div class="titre-article">
+                                    <span>Informatique, Robotique et Intelligence Artificielle au collège N2</span>
+                                    <input type="checkbox" name="title[]" value="8">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input Type="text" name="qte_8" placeholder="Qté">
+                                  </div>
+                                  <div class="remise-article">
+
+                                    <select name="remise_8" id="select">
+                                      <option value="0">0%</option>
+
+                                      <option value="1">1%</option>
+
+                                      <option value="2">2%</option>
+
+                                      <option value="3">3%</option>
+
+                                      <option value="4">4%</option>
+
+                                      <option value="5">5%</option>
+
+                                      <option value="6">6%</option>
+
+                                      <option value="7">7%</option>
+
+                                      <option value="8">8%</option>
+
+                                      <option value="9">9%</option>
+
+                                      <option value="10">10%</option>
+
+                                      <option value="11">11%</option>
+
+                                      <option value="12">12%</option>
+
+                                      <option value="13">13%</option>
+
+                                      <option value="14">14%</option>
+
+                                      <option value="15">15%</option>
+
+                                      <option value="16">16%</option>
+
+                                      <option value="17">17%</option>
+
+                                      <option value="18">18%</option>
+
+                                      <option value="19">19%</option>
+
+                                      <option value="20">20%</option>
+
+                                      <option value="21">21%</option>
+
+                                      <option value="22">22%</option>
+
+                                      <option value="23">23%</option>
+
+                                      <option value="24">24%</option>
+
+                                      <option value="25" selected>25%</option>
+
+                                      <option value="26">26%</option>
+
+                                      <option value="27">27%</option>
+
+                                      <option value="28">28%</option>
+
+                                      <option value="29">29%</option>
+
+                                      <option value="30">30%</option>
+
+                                      <option value="31">31%</option>
+
+                                      <option value="32">32%</option>
+
+                                      <option value="33">33%</option>
+
+                                      <option value="34">34%</option>
+
+                                      <option value="35">35%</option>
+
+                                      <option value="36">36%</option>
+
+                                      <option value="37">37%</option>
+
+                                      <option value="38">38%</option>
+
+                                      <option value="39">39%</option>
+
+                                      <option value="40">40%</option>
+
+                                      <option value="41">41%</option>
+
+                                      <option value="42">42%</option>
+
+                                      <option value="43">43%</option>
+
+                                      <option value="44">44%</option>
+
+                                      <option value="45">45%</option>
+
+                                      <option value="46">46%</option>
+
+                                      <option value="47">47%</option>
+
+                                      <option value="48">48%</option>
+
+                                      <option value="49">49%</option>
+
+                                      <option value="50">50%</option>
+
+
+                                    </select>
+
+                                  </div>
+                                </div><!--  Fin article	 -->
+
+                              </div>
+                            </div>
+
+                          </div> <!-- Fin categorie   -->
+                          <div class="cat-accordian">
+                            <div class="titre-cat">LYCéE</div>
+                            <div class="content-cat">
+                              <div>
+
+                              </div>
+                            </div>
+
+                          </div> <!-- Fin categorie   -->
+                          <div class="cat-accordian">
+                            <div class="titre-cat">PRèS-SCOLAIRE</div>
+                            <div class="content-cat">
+                              <div>
+
+                              </div>
+                            </div>
+
+                          </div> <!-- Fin categorie   -->
+                          <div class="cat-accordian">
+                            <div class="titre-cat">ROBOTOS</div>
+                            <div class="content-cat">
+                              <div>
+                                <div class="article" data-nb="9">
+                                  <div class="titre-article">
+                                    <span>Thymio</span>
+                                    <input type="checkbox" name="title[]" value="9">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input Type="text" name="qte_9" placeholder="Qté">
+                                  </div>
+                                  <div class="remise-article">
+
+                                    <select name="remise_9" id="select">
+                                      <option value="0">0%</option>
+
+                                      <option value="1">1%</option>
+
+                                      <option value="2">2%</option>
+
+                                      <option value="3">3%</option>
+
+                                      <option value="4">4%</option>
+
+                                      <option value="5">5%</option>
+
+                                      <option value="6">6%</option>
+
+                                      <option value="7">7%</option>
+
+                                      <option value="8">8%</option>
+
+                                      <option value="9">9%</option>
+
+                                      <option value="10">10%</option>
+
+                                      <option value="11">11%</option>
+
+                                      <option value="12">12%</option>
+
+                                      <option value="13">13%</option>
+
+                                      <option value="14">14%</option>
+
+                                      <option value="15">15%</option>
+
+                                      <option value="16">16%</option>
+
+                                      <option value="17">17%</option>
+
+                                      <option value="18">18%</option>
+
+                                      <option value="19">19%</option>
+
+                                      <option value="20">20%</option>
+
+                                      <option value="21">21%</option>
+
+                                      <option value="22">22%</option>
+
+                                      <option value="23">23%</option>
+
+                                      <option value="24">24%</option>
+
+                                      <option value="25" selected>25%</option>
+
+                                      <option value="26">26%</option>
+
+                                      <option value="27">27%</option>
+
+                                      <option value="28">28%</option>
+
+                                      <option value="29">29%</option>
+
+                                      <option value="30">30%</option>
+
+                                      <option value="31">31%</option>
+
+                                      <option value="32">32%</option>
+
+                                      <option value="33">33%</option>
+
+                                      <option value="34">34%</option>
+
+                                      <option value="35">35%</option>
+
+                                      <option value="36">36%</option>
+
+                                      <option value="37">37%</option>
+
+                                      <option value="38">38%</option>
+
+                                      <option value="39">39%</option>
+
+                                      <option value="40">40%</option>
+
+                                      <option value="41">41%</option>
+
+                                      <option value="42">42%</option>
+
+                                      <option value="43">43%</option>
+
+                                      <option value="44">44%</option>
+
+                                      <option value="45">45%</option>
+
+                                      <option value="46">46%</option>
+
+                                      <option value="47">47%</option>
+
+                                      <option value="48">48%</option>
+
+                                      <option value="49">49%</option>
+
+                                      <option value="50">50%</option>
+
+
+                                    </select>
+
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="10">
+                                  <div class="titre-article">
+                                    <span>mBot</span>
+                                    <input type="checkbox" name="title[]" value="10">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input Type="text" name="qte_10" placeholder="Qté">
+                                  </div>
+                                  <div class="remise-article">
+
+                                    <select name="remise_10" id="select">
+                                      <option value="0">0%</option>
+
+                                      <option value="1">1%</option>
+
+                                      <option value="2">2%</option>
+
+                                      <option value="3">3%</option>
+
+                                      <option value="4">4%</option>
+
+                                      <option value="5">5%</option>
+
+                                      <option value="6">6%</option>
+
+                                      <option value="7">7%</option>
+
+                                      <option value="8">8%</option>
+
+                                      <option value="9">9%</option>
+
+                                      <option value="10">10%</option>
+
+                                      <option value="11">11%</option>
+
+                                      <option value="12">12%</option>
+
+                                      <option value="13">13%</option>
+
+                                      <option value="14">14%</option>
+
+                                      <option value="15">15%</option>
+
+                                      <option value="16">16%</option>
+
+                                      <option value="17">17%</option>
+
+                                      <option value="18">18%</option>
+
+                                      <option value="19">19%</option>
+
+                                      <option value="20">20%</option>
+
+                                      <option value="21">21%</option>
+
+                                      <option value="22">22%</option>
+
+                                      <option value="23">23%</option>
+
+                                      <option value="24">24%</option>
+
+                                      <option value="25" selected>25%</option>
+
+                                      <option value="26">26%</option>
+
+                                      <option value="27">27%</option>
+
+                                      <option value="28">28%</option>
+
+                                      <option value="29">29%</option>
+
+                                      <option value="30">30%</option>
+
+                                      <option value="31">31%</option>
+
+                                      <option value="32">32%</option>
+
+                                      <option value="33">33%</option>
+
+                                      <option value="34">34%</option>
+
+                                      <option value="35">35%</option>
+
+                                      <option value="36">36%</option>
+
+                                      <option value="37">37%</option>
+
+                                      <option value="38">38%</option>
+
+                                      <option value="39">39%</option>
+
+                                      <option value="40">40%</option>
+
+                                      <option value="41">41%</option>
+
+                                      <option value="42">42%</option>
+
+                                      <option value="43">43%</option>
+
+                                      <option value="44">44%</option>
+
+                                      <option value="45">45%</option>
+
+                                      <option value="46">46%</option>
+
+                                      <option value="47">47%</option>
+
+                                      <option value="48">48%</option>
+
+                                      <option value="49">49%</option>
+
+                                      <option value="50">50%</option>
+
+
+                                    </select>
+
+                                  </div>
+                                </div><!--  Fin article	 -->
+
+                              </div>
+                            </div>
+
+                          </div> <!-- Fin categorie   -->
+
+
+                        </div>
+                        <div>
+                          <table id="stream_table" class="table table-striped table-bordered article-selected">
+                            <thead>
+                              <tr style="background: #EBD631;">
+                                <td>Titre</td>
+                                <td>Qté</td>
+                                <td>Remise</td>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+
+                          </table>
+
+                        </div>
+
+                        <div>
+                          <button type="submit" class="btn green btn-submit">Valider</button>
+
+                        </div>
+
+                        <input type="hidden" name="type" value='MSM-MEDIAS'>
+                        <input type="hidden" name="page" value='facturation-msm'>
+                      </form>
+
+
+
+                      <br>
+
+
+
+                    </div>
+
+
+
+
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div><!-- Body Sec -->
+
+          </div><!-- main-bg-->
+
+        </div><!-- Row -->
+
+      </div><!-- Container -->
+
+
+
+    </section><!-- Main Section -->
+
+
+
+
+
+    <!-- Side Panel -->
+
+
+
+
+
+  </div><!-- Wrapper -->
+
+
+
+
+
+
+
+  <script type="text/javascript">
+
+    function updateArticleSelected(action, element) {
+      $('.article-selected').fadeIn();
+      var titleArticle = element.find('span').html();
+      var dataNb = element.parent().attr('data-nb');
+      if (action == "add") {
+        var article = "<tr class='tr_" + dataNb + "'><td>" + titleArticle + "</td><td class='qte'></td><td class='remise'>25%</td></tr>";
+        $('.article-selected tbody').append(article);
+      }
+      else if (action == "supp") {
+        $('.article-selected tbody').find('tr.tr_' + dataNb).remove();
+      }
+    }
+
+
+    $('.cat-accordian .titre-cat').click(function () {
+      $('.cat-accordian .content-cat').not($(this).next('.content-cat')).slideUp();
+      $(this).next('.content-cat').slideToggle();
+    });
+
+    $('.cat-accordian .titre-article').click(function () {
+      var checkbox = $(this).find('input[type=checkbox]');
+      if (checkbox.is(':checked')) {
+        checkbox[0].checked = false;
+        $(this).removeClass('article-checked').next('.qte-article').find('input').fadeOut().val('');
+        $(this).next().next('.remise-article').find('select').fadeOut().find('option[value=25]')[0].selected = true;
+
+        updateArticleSelected("supp", $(this));
+      }
+      else {
+        checkbox[0].checked = true;
+        $(this).addClass('article-checked').next('.qte-article').find('input').fadeIn();
+        $(this).next().next('.remise-article').find('select').fadeIn();
+        updateArticleSelected("add", $(this));
+      }
+    });
+
+    $('.qte-article input').keyup(function () {
+      var qte = $(this).val();
+      var dataNb = $(this).parents('.article').attr('data-nb');
+
+      $('.article-selected').find('tr.tr_' + dataNb + ' td.qte').html(qte);
+
+    });
+
+    $('.remise-article select').change(function () {
+      var remise = $(this).find(':selected').val();
+      var dataNb = $(this).parents('.article').attr('data-nb');
+
+      $('.article-selected').find('tr.tr_' + dataNb + ' td.remise').html(remise + '%');
+
+    });
+
+
+  </script>
+
+</body><!-- Body -->
+
+
+
+</html><!-- Html -->

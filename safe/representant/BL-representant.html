@@ -1,0 +1,1705 @@
+<html>
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Administration</title>
+
+  <link rel="shortcut icon" href="images/user-log-in.png">
+
+
+
+
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" type="text/css">
+
+  <link href="http://fonts.googleapis.com/css?family=Raleway:100,900,800,700,600,500,400,300,200" rel="stylesheet"
+    type="text/css"><!-- Google Fonts -->
+
+
+
+  <!-- Styles -->
+
+  <link rel="stylesheet" href="../admin/css/bootstrap.css" type="text/css"><!-- Bootstrap -->
+
+  <link href="../admin/css/jquery.mCustomScrollbar.css" rel="stylesheet"><!-- Custom Scroll Bar -->
+
+  <link rel="stylesheet" href="../admin/font-awesome/css/font-awesome.css" type="text/css"><!-- Font Awesome -->
+
+  <link rel="stylesheet" href="../admin/css/style.css" type="text/css"><!-- Style -->
+
+
+
+  <link rel="stylesheet" href="../admin/css/responsive.css" type="text/css"><!-- Responsive Style -->
+
+
+
+  <!-- Script -->
+
+  <script src="../admin/js/ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><!-- Jquery -->
+
+  <script type="text/javascript" src="../admin/js/bootstrap.js"></script><!-- Bootstrap -->
+
+  <script type="text/javascript" src="../admin/js/script.js"></script><!-- Script -->
+
+  <style type="text/css">
+    .notification {
+      margin: 0 auto;
+      background: #f00;
+      width: 29px;
+      height: 29px;
+      border-radius: 19px;
+      color: #fff;
+      padding: 5px 0;
+      font-weight: bold;
+    }
+
+    .content-articles {
+      clear: both;
+      float: none;
+    }
+
+    .content-articles .cat-accordian {
+      margin-bottom: 10px;
+    }
+
+    .content-articles .cat-accordian .titre-cat {
+      background: #31BEEB;
+      padding: 10px;
+      color: #fff;
+      font-family: arial;
+      font-weight: bold;
+      border-radius: 2px;
+      cursor: pointer;
+
+    }
+
+    .content-articles .cat-accordian .content-cat {
+      padding: 10px;
+      background: #eee;
+      border: 1px solid #ccc;
+      border-top: 0;
+      display: table;
+      display: none;
+    }
+
+    .content-articles .cat-accordian .content-cat>div {
+      display: table;
+      width: 100%;
+    }
+
+    .content-articles .cat-accordian .content-cat .article {
+      display: table-row;
+      width: 100%;
+
+    }
+
+    .content-articles .cat-accordian .content-cat .article>div {
+      display: table-cell;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .content-articles .cat-accordian .content-cat .article .qte-article input {
+      display: none;
+      height: 37px !important;
+      margin-top: -4px !important;
+      text-align: right !important;
+      font-size: 18px !important;
+      padding-right: 11px !important;
+    }
+
+    .content-articles .cat-accordian .content-cat .article .titre-article input {
+      display: none;
+    }
+
+    .content-articles .cat-accordian .content-cat .article .titre-article {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      float: left;
+      width: 70%;
+      cursor: pointer;
+    }
+
+    .content-articles .cat-accordian .content-cat .article .titre-article.article-checked {
+      background: #0A8A0A;
+      color: #fff;
+      border: 1px solid #0A8A0A;
+    }
+
+    .content-articles .cat-accordian .content-cat .article .qte-article {
+      width: 30%;
+      float: left;
+      padding: 5px;
+    }
+
+    button.btn.green.btn-submit {
+      display: block;
+      margin: 0 auto;
+      padding: 11px;
+      width: 200px;
+      margin-top: 50px;
+      font-size: 17px;
+    }
+
+    table.table.table-striped.table-bordered.article-selected {
+      width: 400px;
+      margin: 0 auto;
+      float: none;
+      margin-top: 40px;
+      display: none;
+    }
+  </style>
+  <script type="text/javascript">
+
+    function supp() {
+
+      if (confirm('voullez vous vraiment supprimez ce BL ?')) return true;
+
+      else return false;
+
+    }
+
+
+
+    function coche() {
+
+      if (confirm('voullez vous vraiment décocher ce BL ?')) return true;
+
+      else return false;
+
+    }
+
+
+
+    function valider(f) {
+      var test = 1;
+      for (var i = 1; i <= 10; i++) {
+        livre = document.getElementById('livre' + i);
+        value = livre.options[livre.selectedIndex].value;
+
+        if (value == '-') {
+          livre.style.backgroundColor = "#FFC8C8";
+          test *= 0;
+        }
+      };
+
+      if (test == 1) {
+        $('.btn-submit').attr("disabled", "disabled");
+        return true;
+      }
+      else {
+        alert('Il faut choisir un article pas une categorie !')
+        return false;
+      }
+
+
+
+    }
+
+
+
+  </script>
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="wrapper">
+
+    <header>
+
+      <div class="logo">
+
+        <img src="images/logo.png" alt="">
+
+      </div><!-- Logo -->
+
+      <div class="welcome-user">
+
+        <!-- <img src="images/user.png" alt=""/> -->
+
+        <span></span>
+
+
+
+      </div>
+
+
+
+      <!-- Menu 1 -->
+
+      <div class="side-navigation">
+
+        <ul>
+
+          <li><a href="./?page=Accueil"><i class="icon-home"></i>Accueil</a>
+
+          </li>
+          <li><a title=""><i class="icon-book"></i>Livres</a>
+
+
+
+            <ul>
+
+              <li><a href="./?page=categories" title=""><i class="icon-angle-right"></i>Catégories</a></li>
+
+              <li><a href="./?page=livres" title=""><i class="icon-angle-right"></i>livres</a></li>
+
+
+
+            </ul>
+
+
+
+          </li>
+
+
+
+          <li><a title=""><i class="icon-print"></i>Fournisseurs</a>
+
+
+
+            <ul>
+              <li><a href="./?page=imprimeurs" title=""><i class="icon-angle-right"></i>Fournisseurs disponibles</a>
+              </li>
+
+
+
+              <li><a href="./?page=imp-bl" title=""><i class="icon-angle-right"></i>Saisir un BL</a></li>
+
+              <li><a href="./?page=imp-remb" title=""><i class="icon-angle-right"></i>Remboursement</a></li>
+
+              <li><a href="./?page=imp-synthese" title=""><i class="icon-angle-right"></i>Synthèse BL</a></li>
+
+              <li><a href="./?page=imp-synthese-remb" title=""><i class="icon-angle-right"></i>Synthèse
+                  Remboursemnet</a></li>
+
+
+
+
+
+            </ul>
+
+
+
+          </li>
+
+          <li><a title=""><i class="icon-user"></i>Représentant
+            </a>
+
+            <ul>
+
+              <li><a href="./?page=representant" title=""><i class="icon-angle-right"></i>Représentants disponibles </a>
+              </li>
+
+
+
+              <li><a href="./?page=BL-representant" title=""><i class="icon-angle-right"></i>Saisie un BL</a></li>
+
+              <li><a href="./?page=Remboursement" title=""><i class="icon-angle-right"></i>Remboursement
+
+
+                </a></li>
+
+              <li><a href="./?page=fact-rep" title=""><i class="icon-angle-right"></i>Demande de facturation </a></li>
+
+              <li><a href="./?page=factures" title=""><i class="icon-angle-right"></i>Factures </a></li>
+
+              <li><a href="./?page=remb-fact" title=""><i class="icon-angle-right"></i>Remboursement Factures </a></li>
+
+              <!-- <li><a href="./?page=Trassabilite" title=""><i class="icon-angle-right"></i></a></li> -->
+
+              <li><a href="./?page=depot" title=""><i class="icon-angle-right"></i>Déclaratoin Dépôt </a></li>
+              <li style="background: #7CD5FF;"><a href="./?page=cahier_texte" title=""><i
+                    class="icon-angle-right"></i>Cahier de texte
+                </a></li>
+              <li style="background: #ffab26;;"><a href="./?page=carte_visite" title=""><i
+                    class="icon-angle-right"></i>Cartes de Visite &amp; Chevalet
+                </a></li>
+
+              <li><a href="./?page=rep-synthese" title=""><i class="icon-angle-right"></i>synthèse BL </a></li>
+
+              <li><a href="./?page=rep-synthese-remb" title=""><i class="icon-angle-right"></i>synthèse Remboursement
+                </a></li>
+
+
+
+
+
+
+
+
+
+            </ul>
+
+
+
+          </li>
+          <li><a href="./?page=Robot"><i class="icon-gear"></i>Robots</a></li>
+
+          <li><a title=""><i class="icon-file-text-alt"></i>Traçabilité</a>
+
+
+
+            <ul>
+              <li><a href="./?page=client" title=""><i class="icon-angle-right"></i>clients</a></li>
+
+
+
+              <li><a href="./?page=bl-client" title=""><i class="icon-angle-right"></i>BL Clients</a></li>
+
+              <li><a href="./?page=remb-client" title=""><i class="icon-angle-right"></i>Remboursement Client</a></li>
+
+              <li><a href="./?page=synthese-client" title=""><i class="icon-angle-right"></i>Synthèse</a></li>
+
+
+
+
+            </ul>
+
+
+
+          </li>
+
+          <li><a title=""><i class="icon-file-text-alt"></i>Synthèses Globales</a>
+
+
+
+            <ul>
+
+              <li><a href="./?page=livraison_imp" title=""><i class="icon-angle-right"></i>Livraison Fournisseurs --&gt;
+                  MSM-MEDIAS</a></li>
+
+              <li><a href="./?page=livraison" title=""><i class="icon-angle-right"></i>Livraison MSM-MEDIAS --&gt;
+                  REP</a></li>
+
+              <li><a href="./?page=vente" title=""><i class="icon-angle-right"></i>Ventes</a></li>
+
+
+
+              <li><a href="./?page=depot_global" title=""><i class="icon-angle-right"></i>Dépôt</a></li>
+
+              <li><a href="./?page=remb_globale_imp" title=""><i class="icon-angle-right"></i>Remboursement
+                  Fournisseurs</a></li>
+
+              <li><a href="./?page=remb_globale" title=""><i class="icon-angle-right"></i>Remboursement REP</a></li>
+              <li><a href="./?page=Balance" title=""><i class="icon-angle-right"></i>Balance</a></li>
+
+
+
+            </ul>
+
+
+
+          </li>
+
+
+          <li><a style="color:#fff"><i class="icon-envelope"></i>Emailing</a>
+            <ul>
+              <li><a href="./?page=Emailing"><i class="icon-angle-right"></i>Simple Email</a></li>
+              <li><a href="./?page=invitation"><i class="icon-angle-right"></i>Invitation</a></li>
+
+
+            </ul>
+          </li>
+          <li><a title=""><i class="icon-cogs"></i>Réglages</a>
+
+            <ul>
+
+              <li><a href="./?page=semestre" title=""><i class="icon-angle-right"></i>Season de travail</a></li>
+
+
+
+              <li><a href="./?page=Peid-facture" title=""><i class="icon-angle-right"></i>Pied de facture</a></li>
+
+              <li><a href="./?page=modeles-CT&amp;tab=1" title=""><i class="icon-angle-right"></i>Modèles Cahier de
+                  texte</a></li>
+
+
+
+            </ul>
+
+
+
+
+          </li>
+          <li><a><i class="icon-cogs"></i>SAISON : 2026 / 2027 </a></li>
+          <li><a href="/login.html" title=""><i class="icon-off"></i>Déconnexion</a></li>
+
+
+
+
+        </ul>
+
+      </div>
+      <!-- end  menu 2-->
+
+
+
+
+
+
+
+
+
+
+
+      <a class="slide-up-btn"><i class="icon-align-justify"></i></a>
+
+    </header><!-- Header End -->
+
+
+
+
+
+    <section class="main-section">
+
+      <div class="responsive-logo">
+
+        <img src="images/logo.png" alt="">
+
+      </div>
+
+
+
+      <!-- menu 2 -->
+
+      <div class="responsive-menu">
+
+        <div class="responsive-menu-dropdown">
+
+          <a title="" class="red">MENU <i class="icon-align-justify"></i></a>
+
+        </div>
+
+
+        <ul>
+          <li><a href="./?page=Accueil"><i class="icon-home"></i>Accueil</a>
+          </li>
+          <li><a title=""><i class="icon-book"></i>Livres</a>
+            <ul>
+              <li><a href="./?page=categories" title=""><i class="icon-angle-right"></i>Catégories</a></li>
+              <li><a href="./?page=livres" title=""><i class="icon-angle-right"></i>livres</a></li>
+            </ul>
+          </li>
+          <li><a title=""><i class="icon-print"></i>Fournisseurs</a>
+            <ul>
+              <li><a href="./?page=imprimeurs" title=""><i class="icon-angle-right"></i>Fournisseurs disponibles</a>
+              </li>
+              <li><a href="./?page=imp-bl" title=""><i class="icon-angle-right"></i>Saisir un BL</a></li>
+              <li><a href="./?page=imp-remb" title=""><i class="icon-angle-right"></i>Remboursement</a></li>
+              <li><a href="./?page=imp-synthese" title=""><i class="icon-angle-right"></i>Synthèse BL</a></li>
+              <li><a href="./?page=imp-synthese-remb" title=""><i class="icon-angle-right"></i>Synthèse
+                  Remboursemnet</a></li>
+            </ul>
+          </li>
+          <li>
+            <a title=""><i class="icon-user"></i>Représentant
+            </a>
+            <ul>
+              <li><a href="./?page=representant" title=""><i class="icon-angle-right"></i>Représentants disponibles </a>
+              </li>
+              <li><a href="./?page=BL-representant" title=""><i class="icon-angle-right"></i>Saisie un BL</a></li>
+              <li><a href="./?page=Remboursement" title=""><i class="icon-angle-right"></i>Remboursement
+                </a></li>
+              <li><a href="./?page=fact-rep" title=""><i class="icon-angle-right"></i>Demande de facturation
+                </a></li>
+              <li><a href="./?page=factures" title=""><i class="icon-angle-right"></i>Factures </a></li>
+              <li><a href="./?page=remb-fact" title=""><i class="icon-angle-right"></i>Remboursement Factures </a></li>
+
+              <!-- <li><a href="./?page=Trassabilite" title=""><i class="icon-angle-right"></i></a></li> -->
+
+              <li><a href="./?page=depot" title=""><i class="icon-angle-right"></i>Déclaratoin Dépôt
+                </a></li>
+              <li style="background: #7CD5FF;"><a href="./?page=cahier_texte" title=""><i
+                    class="icon-angle-right"></i>Cahier de texte
+                </a></li>
+              <li style="background: #ffab26;;"><a href="./?page=carte_visite" title=""><i
+                    class="icon-angle-right"></i>Cartes de visite &amp; Chevalet
+                </a></li>
+
+              <li><a href="./?page=rep-synthese" title=""><i class="icon-angle-right"></i>synthèse BL </a></li>
+              <li><a href="./?page=rep-synthese-remb" title=""><i class="icon-angle-right"></i>synthèse Remboursement
+                </a></li>
+
+            </ul>
+          </li>
+          <li><a title="" style="background: #303030; cursor: default; color: #fff;"><i class="icon-cogs"></i>SAISON :
+              2026 / 2027 </a></li>
+
+
+        </ul>
+        <ul>
+          <li><a title=""><i class="icon-file-text-alt"></i>Traçabilité</a>
+            <ul>
+              <li><a href="./?page=client" title=""><i class="icon-angle-right"></i>clients</a></li>
+              <li><a href="./?page=bl-client" title=""><i class="icon-angle-right"></i>BL Clients</a></li>
+              <li><a href="./?page=remb-client" title=""><i class="icon-angle-right"></i>Remboursement Client</a></li>
+              <li><a href="./?page=synthese-client" title=""><i class="icon-angle-right"></i>Synthèse</a></li>
+            </ul>
+          </li>
+          <li><a title=""><i class="icon-file-text-alt"></i>Synthèses Globales</a>
+            <ul>
+              <li><a href="./?page=livraison_imp" title=""><i class="icon-angle-right"></i>Livraison <br>
+                  Fournisseurs --&gt; MSM-MEDIAS</a></li>
+              <li><a href="./?page=livraison" title=""><i class="icon-angle-right"></i>Livraison MSM-MEDIAS --&gt;
+                  REP</a></li>
+              <li><a href="./?page=vente" title=""><i class="icon-angle-right"></i>Ventes</a></li>
+              <li><a href="./?page=depot_global" title=""><i class="icon-angle-right"></i>Dépôt</a></li>
+              <li><a href="./?page=remb_globale_imp" title=""><i class="icon-angle-right"></i>Remboursement
+                  Fournisseurs</a></li>
+              <li><a href="./?page=remb_globale" title=""><i class="icon-angle-right"></i>Remboursement REP</a></li>
+              <li><a href="./?page=Balance" title=""><i class="icon-angle-right"></i>Balance</a></li>
+            </ul>
+          </li>
+          <li style="background: #258AF3;"><a style="color:#fff"><i class="glyphicon glyphicon-envelope"
+                style="color:#fff;margin-top: -2px;font-size: 20px;"></i>Emailing</a>
+            <ul>
+              <li><a href="./?page=Emailing"><i class="icon-angle-right"></i>Simple Email</a></li>
+              <li><a href="./?page=invitation"><i class="icon-angle-right"></i>Invitation</a></li>
+            </ul>
+          </li>
+          <li><a title=""><i class="icon-cogs"></i>Réglages</a>
+            <ul>
+              <li><a href="./?page=semestre" title=""><i class="icon-angle-right"></i>Season de travail</a></li>
+              <li><a href="./?page=Peid-facture" title=""><i class="icon-angle-right"></i>Pied de facture</a></li>
+              <li><a href="./?page=modeles-CT&amp;tab=1" title=""><i class="icon-angle-right"></i>Modèles Cahier de
+                  texte</a></li>
+            </ul>
+
+          </li>
+
+          <li><a href="/login.html" title=""><i class="icon-off"></i>Déconnexion</a></li>
+
+        </ul>
+
+      </div>
+      <!-- end menu 2 -->
+
+      <!-- ****************************************fin de menu **************************************** -->
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="main-bg">
+
+            <div class="top-stats">
+
+
+
+              <div class="top-stats-icons">
+
+                <a href="../logout.php" title="Déconnecter"> <i class="icon-off"></i></a>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="breadcrumbs-notify">
+
+              <a href="./?page=Accueil">Accueil /</a><a>BL (MSM-MEDIAS --&gt; Représentant)</a>
+
+
+
+            </div>
+
+
+
+            <div class="heading-buttons-sec">
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- *********************************content**************************************			 -->
+
+
+
+
+
+
+
+
+
+
+
+            <div class="body-sec">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="col-md-12">
+
+                <div class="widget-body">
+
+                  <div class="widget-heading blue">
+
+                    <i class="icon-book"></i>
+                    <h3 class="pull-left">Liste des BLs</h3>
+
+
+                    <ul>
+                      <li class="dropdown panel-function">
+                        <a href="#" data-toggle="dropdown" role="button" id="drop3"> <b class="caret"></b></a>
+                        <ul aria-labelledby="drop3" role="menu" class="dropdown-menu" id="menu3">
+                          <li role="presentation"><a class="hide-btn" title="">-</a></li>
+
+                          <li role="presentation" class="color-box-hover"><a class="color-box" title=""><i
+                                class="icon-magic"></i></a>
+                            <div class="color-box-sec">
+                              <a title="" class="clr-red"><i class="red"></i></a>
+                              <a title="" class="clr-blue"><i class="blue"></i></a>
+                              <a title="" class="clr-green"><i class="green"></i></a>
+                              <a title="" class="clr-orange"><i class="orange"></i></a>
+                              <a title="" class="clr-purple"><i class="purple"></i></a>
+                              <a title="" class="clr-gray"><i class="gray"></i></a>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="widget-sec">
+
+                    <div id="contact">
+
+
+
+                      <form action="" method="post">
+
+                        <select name="rep" style="width: 200px;float:left;margin-left:10px;margin-right:10px;"
+                          onchange="this.form.submit()">
+
+                          <option value="all"> Afficher tous</option>
+                          <option value="1"> Adnane</option>
+                          <option value="2"> abjalil</option>
+
+                        </select>
+
+
+                      </form>
+
+
+
+                      <table id="stream_table" class="table table-striped table-bordered">
+
+
+
+
+
+                        <thead>
+
+                          <tr>
+
+                            <th> Représentant</th>
+
+                            <th> Date</th>
+
+                            <th> Type</th>
+
+                            <th style="min-width: 170px;"> BL N°</th>
+
+                            <th> Mode d'envoi</th>
+
+
+
+
+                            <th> Détails</th>
+
+                            <th> Imprimer</th>
+
+                            <th>
+                              <div class="notification" title="Nombre des BL non-vu">7</div> Vu
+                            </th>
+
+                            <th>
+                              <div class="notification" title="Nombre des BL non-reçu">7</div> Reçu
+                            </th>
+
+
+
+
+
+                          </tr>
+
+
+
+                        </thead>
+
+                        <tbody>
+
+
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 066666567 "> abjalil </span></td>
+
+                            <td style="text-align:center;">15/01/2026</td>
+
+                            <td style="text-align:center;">Pedagogie</td>
+
+                            <td style="text-align:center;">Péd001-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-15&amp;rep=2&amp;bl=P%C3%A9d001-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-15&amp;rep=2&amp;bl=P%C3%A9d001-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 066666567 "> abjalil </span></td>
+
+                            <td style="text-align:center;">07/01/2026</td>
+
+                            <td style="text-align:center;">Specimen</td>
+
+                            <td style="text-align:center;">Spé 02-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-07&amp;rep=2&amp;bl=Sp%C3%A9+02-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-07&amp;rep=2&amp;bl=Sp%C3%A9+02-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 066666567 "> abjalil </span></td>
+
+                            <td style="text-align:center;">07/01/2026</td>
+
+                            <td style="text-align:center;">Retour</td>
+
+                            <td style="text-align:center;">Ret 02-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-07&amp;rep=2&amp;bl=Ret+02-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-07&amp;rep=2&amp;bl=Ret+02-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 066666567 "> abjalil </span></td>
+
+                            <td style="text-align:center;">06/01/2026</td>
+
+                            <td style="text-align:center;">Livre</td>
+
+                            <td style="text-align:center;">008-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-06&amp;rep=2&amp;bl=008-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-06&amp;rep=2&amp;bl=008-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 066666567 "> abjalil </span></td>
+
+                            <td style="text-align:center;">06/01/2026</td>
+
+                            <td style="text-align:center;">Livre</td>
+
+                            <td style="text-align:center;">009-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-06&amp;rep=2&amp;bl=009-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-06&amp;rep=2&amp;bl=009-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 066666567 "> abjalil </span></td>
+
+                            <td style="text-align:center;">05/01/2026</td>
+
+                            <td style="text-align:center;">Livre</td>
+
+                            <td style="text-align:center;">007-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-05&amp;rep=2&amp;bl=007-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-05&amp;rep=2&amp;bl=007-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 066666567 "> abjalil </span></td>
+
+                            <td style="text-align:center;">02/01/2026</td>
+
+                            <td style="text-align:center;">Livre</td>
+
+                            <td style="text-align:center;">006-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-02&amp;rep=2&amp;bl=006-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-02&amp;rep=2&amp;bl=006-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                            <td style="text-align:center;"><img src="images/nonrecu.png"></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 0662828750 "> Adnane </span></td>
+
+                            <td style="text-align:center;">12/01/2026</td>
+
+                            <td style="text-align:center;">Livre</td>
+
+                            <td style="text-align:center;">0001-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-12&amp;rep=1&amp;bl=0001-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-12&amp;rep=1&amp;bl=0001-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/recu.png"></td>
+
+
+
+                            <td style="text-align:center;"><a onclick="return coche();"
+                                href="recu_bl_rep.php?date=2026-01-12&amp;rep=1&amp;bl=0001-2026&amp;etat=1778096886"><img
+                                  src="images/recu.png"></a></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 0662828750 "> Adnane </span></td>
+
+                            <td style="text-align:center;">12/01/2026</td>
+
+                            <td style="text-align:center;">Specimen</td>
+
+                            <td style="text-align:center;">Spé 01-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-12&amp;rep=1&amp;bl=Spé 01-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-12&amp;rep=1&amp;bl=Spé 01-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/recu.png"></td>
+
+
+
+                            <td style="text-align:center;"><a onclick="return coche();"
+                                href="recu_bl_rep.php?date=2026-01-12&amp;rep=1&amp;bl=Spé 01-2026&amp;etat=1778096886"><img
+                                  src="images/recu.png"></a></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 0662828750 "> Adnane </span></td>
+
+                            <td style="text-align:center;">12/01/2026</td>
+
+                            <td style="text-align:center;">Retour</td>
+
+                            <td style="text-align:center;">Ret 01-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-12&amp;rep=1&amp;bl=Ret 01-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-12&amp;rep=1&amp;bl=Ret 01-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/recu.png"></td>
+
+
+
+                            <td style="text-align:center;"><a onclick="return coche();"
+                                href="recu_bl_rep.php?date=2026-01-12&amp;rep=1&amp;bl=Ret 01-2026&amp;etat=1778096886"><img
+                                  src="images/recu.png"></a></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 0662828750 "> Adnane </span></td>
+
+                            <td style="text-align:center;">12/01/2026</td>
+
+                            <td style="text-align:center;">Livre</td>
+
+                            <td style="text-align:center;">002-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-12&amp;rep=1&amp;bl=002-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-12&amp;rep=1&amp;bl=002-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/recu.png"></td>
+
+
+
+                            <td style="text-align:center;"><a onclick="return coche();"
+                                href="recu_bl_rep.php?date=2026-01-12&amp;rep=1&amp;bl=002-2026&amp;etat=1778096886"><img
+                                  src="images/recu.png"></a></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 0662828750 "> Adnane </span></td>
+
+                            <td style="text-align:center;">09/01/2026</td>
+
+                            <td style="text-align:center;">Pedagogie</td>
+
+                            <td style="text-align:center;">003-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-09&amp;rep=1&amp;bl=003-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-09&amp;rep=1&amp;bl=003-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/recu.png"></td>
+
+
+
+                            <td style="text-align:center;"><a onclick="return coche();"
+                                href="recu_bl_rep.php?date=2026-01-09&amp;rep=1&amp;bl=003-2026&amp;etat=1778096886"><img
+                                  src="images/recu.png"></a></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 0662828750 "> Adnane </span></td>
+
+                            <td style="text-align:center;">08/01/2026</td>
+
+                            <td style="text-align:center;">Livre</td>
+
+                            <td style="text-align:center;">005-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-08&amp;rep=1&amp;bl=005-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-08&amp;rep=1&amp;bl=005-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/recu.png"></td>
+
+
+
+                            <td style="text-align:center;"><a onclick="return coche();"
+                                href="recu_bl_rep.php?date=2026-01-08&amp;rep=1&amp;bl=005-2026&amp;etat=1778096886"><img
+                                  src="images/recu.png"></a></td>
+
+
+
+                          </tr>
+
+
+
+
+                          <tr>
+
+                            <td><span title="Tél : 0662828750 "> Adnane </span></td>
+
+                            <td style="text-align:center;">06/01/2026</td>
+
+                            <td style="text-align:center;">Livre</td>
+
+                            <td style="text-align:center;">004-2026</td>
+
+                            <td style="text-align:center;">---</td>
+
+
+                            <td style="text-align:center;"> <a
+                                href="details_bl.php?date=2026-01-06&amp;rep=1&amp;bl=004-2026"><img
+                                  src="images/view.png" width="30"></a></td>
+                            <td style="text-align:center;"><a
+                                href="print_bl.php?date=2026-01-06&amp;rep=1&amp;bl=004-2026"><img
+                                  src="images/print.png" width="33"></a></td>
+
+
+
+
+                            <td style="text-align:center;"><img src="images/recu.png"></td>
+
+
+
+                            <td style="text-align:center;"><a onclick="return coche();"
+                                href="recu_bl_rep.php?date=2026-01-06&amp;rep=1&amp;bl=004-2026&amp;etat=1778096886"><img
+                                  src="images/recu.png"></a></td>
+
+
+
+                          </tr>
+
+
+
+
+                        </tbody>
+
+
+
+                      </table>
+
+                      <br>
+
+
+
+                    </div>
+
+
+
+
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+
+
+
+              <div class="col-md-12">
+
+                <div class="widget-body">
+
+                  <div class="widget-heading green">
+
+                    <i class="icon-plus"></i>
+                    <h3 class="pull-left">Ajouter un BL (MSM-MEDIAS --&gt; Représentant)</h3>
+
+
+
+                  </div>
+
+                  <div class="widget-sec">
+
+                    <div id="contact">
+
+
+
+                      <form action="add-bl-rep.php" class="form-add-bl" method="post" id="form"
+                        onsubmit="return valider(this);">
+
+
+                        <table id="stream_table" class="table table-striped table-bordered">
+
+                          <thead>
+
+                            <tr style="background: #31BEEB;">
+                              <th> Représentant</th>
+
+                              <th> Date</th>
+
+                              <th> Type</th>
+
+                              <th> BL N°</th>
+
+                              <th> Mode d'envoi</th>
+                            </tr>
+
+
+
+                          </thead>
+
+                          <tbody>
+                            <tr>
+                              <td>
+                                <select name="rep" style="width: 165px;" required="">
+
+                                  <option value=""></option>
+                                  <option value="1"> Adnane</option>
+                                  <option value="2"> abjalil</option>
+                                </select>
+                              </td>
+
+                              <td><input type="date" name="date" style="text-align:center;width: 165px;" required="">
+
+                              </td>
+                              <td><select name="type" style="width: 165px;">
+
+                                  <option value="BL">Livre</option>
+
+                                  <option value="Specimen">Spécimen</option>
+                                  <option value="Retour">Retour</option>
+                                  <option value="Rejete">Rejeté</option>
+                                  <option value="Pedagogie">Pédagogie</option>
+
+
+                                </select>
+                              </td>
+                              <td><input type="text" name="bl" style="text-align:center;width: 165px;" required="">
+
+                              </td>
+                              <td><input type="text" name="mode" style="text-align:center;width: 165px;">
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                        <div class="content-articles">
+                          <div class="cat-accordian">
+                            <div class="titre-cat">PRIMAIRE </div>
+                            <div class="content-cat" style="display: block;">
+                              <div>
+                                <div class="article" data-nb="1">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 1</span>
+                                    <input type="checkbox" name="title[]" value="1">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input type="text" name="qte_1" placeholder="Qté">
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="2">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 2</span>
+                                    <input type="checkbox" name="title[]" value="2">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input type="text" name="qte_2" placeholder="Qté">
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="3">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 3</span>
+                                    <input type="checkbox" name="title[]" value="3">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input type="text" name="qte_3" placeholder="Qté">
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="4">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 4</span>
+                                    <input type="checkbox" name="title[]" value="4">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input type="text" name="qte_4" placeholder="Qté">
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="5">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 5</span>
+                                    <input type="checkbox" name="title[]" value="5">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input type="text" name="qte_5" placeholder="Qté">
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="6">
+                                  <div class="titre-article">
+                                    <span>Informatique et Robotique au primaire N 6</span>
+                                    <input type="checkbox" name="title[]" value="6">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input type="text" name="qte_6" placeholder="Qté">
+                                  </div>
+                                </div><!--  Fin article	 -->
+
+                              </div>
+                            </div>
+
+                          </div> <!-- Fin categorie   -->
+                          <div class="cat-accordian">
+                            <div class="titre-cat">COLLèGE</div>
+                            <div class="content-cat" style="display: none;">
+                              <div>
+                                <div class="article" data-nb="7">
+                                  <div class="titre-article">
+                                    <span>Informatique, Robotique et Intelligence Artificielle au collège N1</span>
+                                    <input type="checkbox" name="title[]" value="7">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input type="text" name="qte_7" placeholder="Qté">
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="8">
+                                  <div class="titre-article">
+                                    <span>Informatique, Robotique et Intelligence Artificielle au collège N2</span>
+                                    <input type="checkbox" name="title[]" value="8">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input type="text" name="qte_8" placeholder="Qté">
+                                  </div>
+                                </div><!--  Fin article	 -->
+
+                              </div>
+                            </div>
+
+                          </div> <!-- Fin categorie   -->
+                          <div class="cat-accordian">
+                            <div class="titre-cat">LYCéE</div>
+                            <div class="content-cat" style="">
+                              <div>
+
+                              </div>
+                            </div>
+
+                          </div> <!-- Fin categorie   -->
+                          <div class="cat-accordian">
+                            <div class="titre-cat">PRèS-SCOLAIRE</div>
+                            <div class="content-cat" style="">
+                              <div>
+
+                              </div>
+                            </div>
+
+                          </div> <!-- Fin categorie   -->
+                          <div class="cat-accordian">
+                            <div class="titre-cat">ROBOTOS</div>
+                            <div class="content-cat" style="">
+                              <div>
+                                <div class="article" data-nb="9">
+                                  <div class="titre-article">
+                                    <span>Thymio</span>
+                                    <input type="checkbox" name="title[]" value="9">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input type="text" name="qte_9" placeholder="Qté">
+                                  </div>
+                                </div><!--  Fin article	 -->
+                                <div class="article" data-nb="10">
+                                  <div class="titre-article">
+                                    <span>mBot</span>
+                                    <input type="checkbox" name="title[]" value="10">
+                                  </div>
+                                  <div class="qte-article">
+                                    <input type="text" name="qte_10" placeholder="Qté">
+                                  </div>
+                                </div><!--  Fin article	 -->
+
+                              </div>
+                            </div>
+
+                          </div> <!-- Fin categorie   -->
+
+
+                        </div>
+                        <div>
+                          <table id="stream_table" class="table table-striped table-bordered article-selected">
+                            <thead>
+                              <tr style="background: #EBD631;">
+                                <td>Titre</td>
+                                <td>Qté</td>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+
+                          </table>
+
+                        </div>
+
+                        <div>
+                          <button type="submit" class="btn green btn-submit">Valider</button>
+
+                        </div>
+
+                      </form>
+
+
+
+                    </div>
+
+
+
+
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div><!-- Body Sec -->
+
+          </div><!-- main-bg-->
+
+        </div><!-- Row -->
+
+      </div><!-- Container -->
+
+
+
+    </section><!-- Main Section -->
+
+
+
+
+
+    <!-- Side Panel -->
+
+
+
+
+
+  </div><!-- Wrapper -->
+
+
+  <script type="text/javascript">
+
+    function updateArticleSelected(action, element) {
+      $('.article-selected').fadeIn();
+      var titleArticle = element.find('span').html();
+      var dataNb = element.parent().attr('data-nb');
+      if (action == "add") {
+        var article = "<tr class='tr_" + dataNb + "'><td>" + titleArticle + "</td><td class='qte'></td></tr>";
+        $('.article-selected tbody').append(article);
+      }
+      else if (action == "supp") {
+        $('.article-selected tbody').find('tr.tr_' + dataNb).remove();
+      }
+    }
+
+
+    $('.cat-accordian .titre-cat').click(function () {
+      $('.cat-accordian .content-cat').not($(this).next('.content-cat')).slideUp();
+      $(this).next('.content-cat').slideToggle();
+    });
+
+    $('.cat-accordian .titre-article').click(function () {
+      var checkbox = $(this).find('input[type=checkbox]');
+      if (checkbox.is(':checked')) {
+        checkbox[0].checked = false;
+        $(this).removeClass('article-checked').next('.qte-article').find('input').fadeOut().val('');
+        updateArticleSelected("supp", $(this));
+      }
+      else {
+        checkbox[0].checked = true;
+        $(this).addClass('article-checked').next('.qte-article').find('input').fadeIn();
+        updateArticleSelected("add", $(this));
+      }
+    });
+
+    $('.qte-article input').keyup(function () {
+      var qte = $(this).val();
+      var dataNb = $(this).parents('.article').attr('data-nb');
+
+      $('.article-selected').find('tr.tr_' + dataNb + ' td.qte').html(qte);
+
+    });
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+</body><!-- Body -->
+
+</html>

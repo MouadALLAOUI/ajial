@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Représentant</title>
+  <link rel="shortcut icon" href="images/user-log-in.png">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:100,900,800,700,600,500,400,300,200' rel='stylesheet'
+    type='text/css'>
+  <!-- Google Fonts -->
+  <!-- Styles -->
+  <link rel="stylesheet" href="../admin/css/bootstrap.css" type="text/css" />
+  <!-- Bootstrap -->
+  <link href="../admin/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+  <!-- Custom Scroll Bar -->
+  <link rel="stylesheet" href="../admin/font-awesome/css/font-awesome.css" type="text/css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../admin/css/style.css" type="text/css" />
+  <!-- Style -->
+  <link rel="stylesheet" href="../admin/css/responsive.css" type="text/css" />
+  <!-- Responsive Style -->
+  <!-- Script -->
+  <script src="../admin/js/ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!-- Jquery -->
+  <script type="text/javascript" src="../admin/js/bootstrap.js"></script>
+  <!-- Bootstrap -->
+  <script type="text/javascript" src="../admin/js/script.js"></script>
+  <!-- Script -->
+  <style type="text/css">
+    .notification {
+      background: #f00;
+      width: 29px;
+      height: 29px;
+      border-radius: 19px;
+      color: #fff;
+      padding: 5px 0;
+      font-weight: bold;
+      margin: 0 auto;
+    }
+  </style>
+  <script type="text/javascript">
+
+
+
+
+
+    function supp() {
+
+      if (confirm('! après confirmation de la réception du BL, vous ne pouvez plus décocher cette case, continuer ?')) return true;
+
+      else return false;
+
+    }
+
+
+
+  </script>
+</head>
+
+<body style="width:100%;">
+  <div class="wrapper">
+    <header>
+      <div class="logo"> <img src="images/logo.png" alt="" /> </div>
+      <!-- Logo -->
+      <div class="welcome-user">
+        <!-- <img src="images/user.png" alt=""/> -->
+        <span></span>
+      </div>
+      <div class="side-navigation">
+        <div class="clear"></div>
+        <ul>
+          <li><a href="./?page=Accueil"><i class="icon-home"></i>Accueil</a></li>
+
+          <li><a><i class="icon-money"></i> Bon de livraison <br />
+              <b>Warning</b>: Undefined variable $notifBl in
+              <b>/home/ajialmedias/public_html/dev/representant/menu1.php</b> on line <b>36</b><br />
+            </a>
+            <ul>
+              <li><a href="./?page=BL"><i class="icon-file-text-alt"></i>BL <br />
+                  <b>Warning</b>: Undefined variable $notifBl in
+                  <b>/home/ajialmedias/public_html/dev/representant/menu1.php</b> on line <b>38</b><br />
+                </a></a></li>
+              <li><a href="./?page=Renboursement"><i class="icon-money"></i>Remboursement</a></li>
+              <li><a href="./?page=synthese-bl-rep"><i class="icon-money"></i>Synthèse BL
+                </a></li>
+            </ul>
+          </li>
+
+          <li><a><i class="icon-file-text-alt"></i>Factures</a>
+            <ul>
+              <li><a href="./?page=facturation-msm" title=""><i class="icon-angle-right"></i>Facture MSM-MEDIAS</a></li>
+              <li><a href="./?page=facturation-wataniya" title=""><i class="icon-angle-right"></i>Facture Wataniya</a>
+              </li>
+              <!-- <li><a href="./?page=remb-fact"><i class="icon-money"></i>Rembourser une facture</a></li> -->
+            </ul>
+          </li>
+
+          <li><a title=""><i class="icon-user"></i>Clients</a>
+            <ul>
+              <li><a href="./?page=client" title=""><i class="icon-angle-right"></i>Ajouter client</a></li>
+              <li><a href="./?page=bl-client" title=""><i class="icon-angle-right"></i>Saisir un BL</a></li>
+              <li><a href="./?page=remb-client" title=""><i class="icon-angle-right"></i>Remboursement</a></li>
+              <li><a href="./?page=synthese-bl" title=""><i class="icon-angle-right"></i>Synthèse BL</a></li>
+              <li><a href="./?page=synthese-remb" title=""><i class="icon-angle-right"></i>Synthèse Remboursemnet</a>
+              </li>
+              <li><a href="./?page=Historique" title=""><i class="icon-angle-right"></i>Historique</a></li>
+              <li><a><i class="icon-angle-right"></i>Synthèse Global</a>
+                <ul>
+                  <li><a href="./?page=Livraison-global" title=""><i class="icon-angle-right"></i>Livraisons clients</a>
+                  </li>
+                  <li><a href="./?page=remb-global" title=""><i class="icon-angle-right"></i>Remboursements clients</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a title="" href="./?page=depot"><i class="icon-print"></i>Dépôt</a></li>
+          <li><a title=""><i class="icon-book"></i>Cahier de texte</a>
+            <ul>
+              <li><a href="./?page=demande_cahier" title=""><i class="icon-angle-right"></i>Commander un cahier</a></li>
+              <li><a href="./?page=suivi_cahier" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a title=""><i class="icon-money"></i>Cartes de visite & Chevalet</a>
+            <ul>
+              <li><a href="./?page=demande_carte" title=""><i class="icon-angle-right"></i>Faire une commande</a></li>
+              <li><a href="./?page=suivi_cartes" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a href="./?page=Robot"><i class="icon-gear"></i>Robots</a></li>
+          <!-- <li><a href="./?page=TawassolApp"><i class="icon-gear"></i>TawassolApp</a></li>  -->
+          <li><a href="./?page=Profile"><i class="icon-user"></i>Profil</a></li>
+          </li>
+          <li><a title=""><i class="icon-cogs"></i>SAISON : 2026 / 2027 </a></li>
+          <li><a href="/login.html" title=""><i class="icon-off"></i>Déconnexion</a></li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <a class="slide-up-btn"><i class="icon-align-justify"></i></a>
+    </header>
+    <!-- Header End -->
+    <section class="main-section">
+      <div class="responsive-logo"> <img src="images/logo.png" alt="" /> </div>
+      <div class="responsive-menu">
+
+        <div class="responsive-menu-dropdown">
+
+          <a title="" class="red">MENU <i class="icon-align-justify"></i></a>
+
+        </div>
+
+        <ul>
+          <li><a href="./?page=Accueil"><i class="icon-home"></i>Accueil</a></li>
+          <li><a href="./?page=BL"><i class="icon-file-text-alt"></i>BL
+            </a>
+          </li>
+          <li><a href="./?page=Renboursement"><i class="icon-money"></i>Remboursement</a></li>
+          <li><a href="./?page=synthese-bl-rep"><i class="icon-money"></i>Synthèse BL
+            </a></li>
+          <li><a><i class="icon-file-text-alt"></i>Demander une facture</a>
+            <ul>
+              <li><a href="./?page=facturation-msm" title=""><i class="icon-angle-right"></i>Facture MSM-MEDIAS</a></li>
+              <li><a href="./?page=facturation-wataniya" title=""><i class="icon-angle-right"></i>Facture Wataniya</a>
+              </li>
+            </ul>
+          </li>
+          <!-- <li><a href="./?page=remb-fact"><i class="icon-money"></i>Rembourser une facture</a></li> -->
+          <li><a title=""><i class="icon-print"></i>Clients</a>
+            <ul>
+              <li><a href="./?page=client" title=""><i class="icon-angle-right"></i>Ajouter client</a></li>
+              <li><a href="./?page=bl-client" title=""><i class="icon-angle-right"></i>Saisir un BL</a></li>
+              <li><a href="./?page=remb-client" title=""><i class="icon-angle-right"></i>Remboursement</a></li>
+              <li><a href="./?page=synthese-bl" title=""><i class="icon-angle-right"></i>Synthèse BL</a></li>
+              <li><a href="./?page=synthese-remb" title=""><i class="icon-angle-right"></i>Synthèse Remboursemnet</a>
+              </li>
+              <li><a href="./?page=Historique" title=""><i class="icon-angle-right"></i>Historique</a></li>
+            </ul>
+          </li>
+
+        </ul>
+        <ul>
+          <li><a><i class="icon-angle-right"></i>Synthèse Global <em style="font-size:11px;">(Clients)</em></a>
+            <ul>
+              <li><a href="./?page=Livraison-global" title=""><i class="icon-angle-right"></i>Livraisons clients</a>
+              </li>
+              <li><a href="./?page=remb-global" title=""><i class="icon-angle-right"></i>Remboursements clients</a></li>
+            </ul>
+          </li>
+          <li><a title="" href="./?page=depot"><i class="icon-print"></i>Dépôt</a></li>
+          <li><a title=""><i class="icon-book"></i>Cahier de texte</a>
+            <ul>
+              <li><a href="./?page=demande_cahier" title=""><i class="icon-angle-right"></i>Commander un cahier</a></li>
+              <li><a href="./?page=suivi_cahier" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a title=""><i class="icon-money"></i>Carte de visite & Chevalet</a>
+            <ul>
+              <li><a href="./?page=demande_carte" title=""><i class="icon-angle-right"></i>Faire une commande</a></li>
+              <li><a href="./?page=suivi_cartes" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a href="./?page=Profile"><i class="icon-user"></i>Profil</a></li>
+          </li>
+          <li><a title="" style='background: #0d6554; cursor: default; color: #fff;'><i class="icon-cogs"></i>SAISON :
+              2026 / 2027 </a></li>
+          <li><a href="/login.html" title=""><i class="icon-off"></i>Déconnexion</a></li>
+
+        </ul>
+
+
+      </div><!-- ****************************************fin de  **************************************** -->
+      <div class="container">
+        <div class="row">
+          <div class="main-bg">
+            <div class="top-stats">
+              <div class="top-stats-icons"> <a href="../logout.php" title="Déconnexion"><i class="icon-off"></i></a>
+              </div>
+            </div>
+            <div class="breadcrumbs-notify"> <a href="./?page=Accueil" title="">accueil /</a> <a title="">BL </a> </div>
+            <div class="heading-buttons-sec"> </div>
+            <!-- *********************************content**************************************			 -->
+            <div class="body-sec">
+              <div class="col-md-12">
+                <div class="widget-body">
+                  <div class="widget-heading blue"> <i class="icon-book"></i>
+                    <h3 class="pull-left">Synthèse BL</h3>
+                  </div>
+                  <div class="widget-sec">
+                    <div id="contact">
+                      <div id="divID">
+                        <div id='div1'>
+                          <table id="stream_table" class="table table-striped table-bordered">
+                            <tr>
+                              <th>
+                                <h4>Crédit : <span style="color:rgb(0, 153, 255);"> 37500 </span>DH</h4>
+                              </th>
+                              <th>
+                                <h4>Avance : <span style="color:rgb(0, 201, 0);"> 2000 </span>DH</h4>
+                              </th>
+                              <th>
+                                <h4>Reste : <span style="color:red;">35500 </sapn>
+                                    <span style="color:#333;">DH</span></h4>
+                              </th>
+                              <th>
+                                <h4> <b>Recouvrement</b> : <b style='color:red'> 5.33 %</b><BR><BR> </h4>
+                              </th>
+                            </tr>
+                          </table>
+                          <table id="stream_table" class="table table-striped table-bordered">
+                            <thead>
+                              <tr>
+                                <th colspan=2> REP : Adnane ::: Cat : Primaire </th>
+                                <th> R1 </th>
+                                <th> R2 </th>
+                                <th> R3 </th>
+                                <th> R4 </th>
+                                <th> R5 </th>
+                                <th> R6 </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+
+                                <td rowspan='2' style='padding-top: 25px;'>En stock</td>
+
+                                <td>Livre</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>308</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>314</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>308</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>314</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>308</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>314</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>308</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>314</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>308</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>314</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>308</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>314</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                              <tr>
+                                <td>Specimen</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>341</b><br />
+                                <br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>345</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>347</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>341</b><br />
+                                <br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>345</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>347</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>341</b><br />
+                                <br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>345</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>347</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>341</b><br />
+                                <br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>345</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>347</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>341</b><br />
+                                <br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>345</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>347</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>341</b><br />
+                                <br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>345</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>347</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                            </tbody>
+                            <tbody>
+                              <tr>
+
+                                <td rowspan='2' style='padding-top: 25px;'>Livraison</td>
+
+                                <td>Livre</td>
+                                <td style='text-align:center'>110 </td>
+                                <td style='text-align:center'>110 </td>
+                                <td style='text-align:center'>110 </td>
+                                <td style='text-align:center'>110 </td>
+                                <td style='text-align:center'>110 </td>
+                                <td style='text-align:center'>110 </td>
+                              </tr>
+                              <tr>
+                                <td>Specimen</td>
+                                <td style='text-align:center'>5 </td>
+                                <td style='text-align:center'>5 </td>
+                                <td style='text-align:center'>5 </td>
+                                <td style='text-align:center'>5 </td>
+                                <td style='text-align:center'>5 </td>
+                                <td style='text-align:center'>5 </td>
+                              </tr>
+                            </tbody>
+                            <tbody>
+                              <tr>
+
+                                <td rowspan='2' style='padding-top: 25px;'>En dépôt</td>
+
+                                <td>Livre</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>465</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>467</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>465</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>467</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>465</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>467</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>465</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>467</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>465</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>467</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>465</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>467</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                              <tr>
+                                <td>Specimen</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>497</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>499</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>497</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>499</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>497</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>499</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>497</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>499</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>497</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>499</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>497</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>499</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table id="stream_table" class="table table-striped table-bordered">
+                            <thead>
+                              <tr>
+                                <th colspan=2> REP : Adnane ::: Cat : Collège</th>
+                                <th> IA7 </th>
+                                <th> IA8 </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+
+                                <td rowspan='2' style='padding-top: 25px;'>En stock</td>
+
+                                <td>Livre</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>308</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>314</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>308</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>314</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                              <tr>
+                                <td>Specimen</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>341</b><br />
+                                <br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>345</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>347</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>341</b><br />
+                                <br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>345</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>347</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                            </tbody>
+                            <tbody>
+                              <tr>
+
+                                <td rowspan='2' style='padding-top: 25px;'>Livraison</td>
+
+                                <td>Livre</td>
+                                <td style='text-align:center'>60 </td>
+                                <td style='text-align:center'>60 </td>
+                              </tr>
+                              <tr>
+                                <td>Specimen</td>
+                                <td style='text-align:center'>5 </td>
+                                <td style='text-align:center'>5 </td>
+                              </tr>
+                            </tbody>
+                            <tbody>
+                              <tr>
+
+                                <td rowspan='2' style='padding-top: 25px;'>En dépôt</td>
+
+                                <td>Livre</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>465</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>467</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>465</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>467</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                              <tr>
+                                <td>Specimen</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>497</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>499</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>497</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>499</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table id="stream_table" class="table table-striped table-bordered">
+                            <thead>
+                              <tr>
+                                <th colspan=2> REP : Adnane ::: Cat : Robotos</th>
+                                <th> Thy </th>
+                                <th> mBot </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+
+                                <td rowspan='2' style='padding-top: 25px;'>En stock</td>
+
+                                <td>Livre</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>308</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>314</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>308</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>314</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                              <tr>
+                                <td>Specimen</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>341</b><br />
+                                <br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>345</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>347</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>341</b><br />
+                                <br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>345</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>347</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                            </tbody>
+                            <tbody>
+                              <tr>
+
+                                <td rowspan='2' style='padding-top: 25px;'>Livraison</td>
+
+                                <td>Livre</td>
+                                <td style='text-align:center'>40 </td>
+                                <td style='text-align:center'>40 </td>
+                              </tr>
+                              <tr>
+                                <td>Specimen</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>421</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>423</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>421</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>423</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                            </tbody>
+                            <tbody>
+                              <tr>
+
+                                <td rowspan='2' style='padding-top: 25px;'>En dépôt</td>
+
+                                <td>Livre</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>465</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>467</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>465</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>467</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                              <tr>
+                                <td>Specimen</td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>497</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>499</b><br />
+                                <td style='text-align:center'>0 </td><br />
+                                <b>Warning</b>: Trying to access array offset on value of type null in
+                                <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line
+                                <b>497</b><br />
+                                <br />
+                                <b>Deprecated</b>: trim(): Passing null to parameter #1 ($string) of type string is
+                                deprecated in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b>
+                                on line <b>499</b><br />
+                                <td style='text-align:center'>0 </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <!-- <thead>
+
+								<tr>
+
+								<th>TOTAL LIVREE</th>
+
+								<th><b>245</b></th><th><b>245</b></th><th><b>245</b></th><th><b>245</b></th><th><b>245</b></th><th><b>245</b></th><th><b>95</b></th><th><b>95</b></th><th><b>65</b></th><th><b>65</b></th>
+							</tr>
+
+							<tr>
+
+								<th>DONT SPECIMEN</th>
+
+								<th><b>10</b></th><th><b>10</b></th><th><b>10</b></th><th><b>10</b></th><th><b>10</b></th><th><b>10</b></th><th><b>10</b></th><th><b>10</b></th><br />
+<b>Warning</b>:  Trying to access array offset on value of type null in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line <b>786</b><br />
+<th><b>0</b></th><br />
+<b>Warning</b>:  Trying to access array offset on value of type null in <b>/home/ajialmedias/public_html/dev/representant/synthese-bl-rep.php</b> on line <b>786</b><br />
+<th><b>0</b></th>
+							</tr>
+
+							</thead> -->
+                          </table>
+                        </div>
+                        <a href="">
+                          <button class='btn green' onclick="printdiv('divID');" value="  "
+                            style="width: 100px;background: #2FCF19; color: #fff">Imprimer</button>
+                        </a>
+                      </div>
+                      <!-- Body Sec -->
+                    </div>
+                    <!-- main-bg-->
+                  </div>
+                  <!-- Row -->
+                </div>
+                <!-- Container -->
+    </section>
+    <!-- Main Section -->
+    <!-- Side Panel -->
+  </div>
+  <!-- Wrapper -->
+</body>
+<!-- Body -->
+
+</html><!-- Html -->

@@ -1,0 +1,578 @@
+<html>
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Représentant</title>
+
+  <link rel="shortcut icon" href="images/user-log-in.png">
+
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" type="text/css">
+
+  <link href="http://fonts.googleapis.com/css?family=Raleway:100,900,800,700,600,500,400,300,200" rel="stylesheet"
+    type="text/css">
+  <!-- Google Fonts -->
+
+  <!-- Styles -->
+
+  <link rel="stylesheet" href="../admin/css/bootstrap.css" type="text/css">
+  <!-- Bootstrap -->
+
+  <link href="../admin/css/jquery.mCustomScrollbar.css" rel="stylesheet">
+  <!-- Custom Scroll Bar -->
+
+  <link rel="stylesheet" href="../admin/font-awesome/css/font-awesome.css" type="text/css">
+  <!-- Font Awesome -->
+
+  <link rel="stylesheet" href="../admin/css/style.css" type="text/css">
+  <!-- Style -->
+
+  <link rel="stylesheet" href="../admin/css/responsive.css" type="text/css">
+  <!-- Responsive Style -->
+
+  <!-- Script -->
+
+  <script src="../admin/js/ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!-- Jquery -->
+
+  <script type="text/javascript" src="../admin/js/bootstrap.js"></script>
+  <!-- Bootstrap -->
+
+  <script type="text/javascript" src="../admin/js/script.js"></script>
+  <!-- Script -->
+
+  <style type="text/css">
+    * {
+      outline: none
+    }
+
+    .notification {
+      background: #f00;
+      width: 29px;
+      height: 29px;
+      border-radius: 19px;
+      color: #fff;
+      padding: 5px 0;
+      font-weight: bold;
+      margin: 0 auto;
+    }
+  </style>
+
+</head>
+
+<body style="width:100%;">
+
+  <div class="wrapper">
+
+    <header>
+
+      <div class="logo">
+
+        <img src="images/logo.png" alt="">
+
+      </div>
+      <!-- Logo -->
+
+      <div class="welcome-user">
+
+        <!-- <img src="images/user.png" alt=""/> -->
+
+        <span></span>
+
+      </div>
+
+      <div class="side-navigation">
+        <div class="clear"></div>
+        <ul>
+          <li><a href="./?page=Accueil"><i class="icon-home"></i>Accueil</a></li>
+
+          <li><a><i class="icon-money"></i> Bon de livraison <br>
+              <b>Warning</b>: Undefined variable $notifBl in
+              <b>/home/ajialmedias/public_html/dev/representant/menu1.php</b> on line <b>36</b><br>
+            </a>
+            <ul>
+              <li><a href="./?page=BL"><i class="icon-file-text-alt"></i>BL <br>
+                  <b>Warning</b>: Undefined variable $notifBl in
+                  <b>/home/ajialmedias/public_html/dev/representant/menu1.php</b> on line <b>38</b><br>
+                </a></li>
+              <li><a href="./?page=Renboursement"><i class="icon-money"></i>Remboursement</a></li>
+              <li><a href="./?page=synthese-bl-rep"><i class="icon-money"></i>Synthèse BL
+                </a></li>
+            </ul>
+          </li>
+
+          <li><a><i class="icon-file-text-alt"></i>Factures</a>
+            <ul>
+              <li><a href="./?page=facturation-msm" title=""><i class="icon-angle-right"></i>Facture MSM-MEDIAS</a></li>
+              <li><a href="./?page=facturation-wataniya" title=""><i class="icon-angle-right"></i>Facture Wataniya</a>
+              </li>
+              <!-- <li><a href="./?page=remb-fact"><i class="icon-money"></i>Rembourser une facture</a></li> -->
+            </ul>
+          </li>
+
+          <li><a title=""><i class="icon-user"></i>Clients</a>
+            <ul>
+              <li><a href="./?page=client" title=""><i class="icon-angle-right"></i>Ajouter client</a></li>
+              <li><a href="./?page=bl-client" title=""><i class="icon-angle-right"></i>Saisir un BL</a></li>
+              <li><a href="./?page=remb-client" title=""><i class="icon-angle-right"></i>Remboursement</a></li>
+              <li><a href="./?page=synthese-bl" title=""><i class="icon-angle-right"></i>Synthèse BL</a></li>
+              <li><a href="./?page=synthese-remb" title=""><i class="icon-angle-right"></i>Synthèse Remboursemnet</a>
+              </li>
+              <li><a href="./?page=Historique" title=""><i class="icon-angle-right"></i>Historique</a></li>
+              <li><a><i class="icon-angle-right"></i>Synthèse Global</a>
+                <ul>
+                  <li><a href="./?page=Livraison-global" title=""><i class="icon-angle-right"></i>Livraisons clients</a>
+                  </li>
+                  <li><a href="./?page=remb-global" title=""><i class="icon-angle-right"></i>Remboursements clients</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a title="" href="./?page=depot"><i class="icon-print"></i>Dépôt</a></li>
+          <li><a title=""><i class="icon-book"></i>Cahier de texte</a>
+            <ul>
+              <li><a href="./?page=demande_cahier" title=""><i class="icon-angle-right"></i>Commander un cahier</a></li>
+              <li><a href="./?page=suivi_cahier" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a title=""><i class="icon-money"></i>Cartes de visite &amp; Chevalet</a>
+            <ul>
+              <li><a href="./?page=demande_carte" title=""><i class="icon-angle-right"></i>Faire une commande</a></li>
+              <li><a href="./?page=suivi_cartes" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a href="./?page=Robot"><i class="icon-gear"></i>Robots</a></li>
+          <!-- <li><a href="./?page=TawassolApp"><i class="icon-gear"></i>TawassolApp</a></li>  -->
+          <li><a href="./?page=Profile"><i class="icon-user"></i>Profil</a></li>
+
+          <li><a title=""><i class="icon-cogs"></i>SAISON : 2026 / 2027 </a></li>
+          <li><a href="/login.html" title=""><i class="icon-off"></i>Déconnexion</a></li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+
+      <a class="slide-up-btn"><i class="icon-align-justify"></i></a>
+
+    </header>
+    <!-- Header End -->
+
+    <section class="main-section">
+
+      <div class="responsive-logo">
+
+        <img src="images/logo.png" alt="">
+
+      </div>
+
+      <div class="responsive-menu">
+
+        <div class="responsive-menu-dropdown">
+
+          <a title="" class="red">MENU <i class="icon-align-justify"></i></a>
+
+        </div>
+
+        <ul>
+          <li><a href="./?page=Accueil"><i class="icon-home"></i>Accueil</a></li>
+          <li><a href="./?page=BL"><i class="icon-file-text-alt"></i>BL
+            </a>
+          </li>
+          <li><a href="./?page=Renboursement"><i class="icon-money"></i>Remboursement</a></li>
+          <li><a href="./?page=synthese-bl-rep"><i class="icon-money"></i>Synthèse BL
+            </a></li>
+          <li><a><i class="icon-file-text-alt"></i>Demander une facture</a>
+            <ul>
+              <li><a href="./?page=facturation-msm" title=""><i class="icon-angle-right"></i>Facture MSM-MEDIAS</a></li>
+              <li><a href="./?page=facturation-wataniya" title=""><i class="icon-angle-right"></i>Facture Wataniya</a>
+              </li>
+            </ul>
+          </li>
+          <!-- <li><a href="./?page=remb-fact"><i class="icon-money"></i>Rembourser une facture</a></li> -->
+          <li><a title=""><i class="icon-print"></i>Clients</a>
+            <ul>
+              <li><a href="./?page=client" title=""><i class="icon-angle-right"></i>Ajouter client</a></li>
+              <li><a href="./?page=bl-client" title=""><i class="icon-angle-right"></i>Saisir un BL</a></li>
+              <li><a href="./?page=remb-client" title=""><i class="icon-angle-right"></i>Remboursement</a></li>
+              <li><a href="./?page=synthese-bl" title=""><i class="icon-angle-right"></i>Synthèse BL</a></li>
+              <li><a href="./?page=synthese-remb" title=""><i class="icon-angle-right"></i>Synthèse Remboursemnet</a>
+              </li>
+              <li><a href="./?page=Historique" title=""><i class="icon-angle-right"></i>Historique</a></li>
+            </ul>
+          </li>
+
+        </ul>
+        <ul>
+          <li><a><i class="icon-angle-right"></i>Synthèse Global <em style="font-size:11px;">(Clients)</em></a>
+            <ul>
+              <li><a href="./?page=Livraison-global" title=""><i class="icon-angle-right"></i>Livraisons clients</a>
+              </li>
+              <li><a href="./?page=remb-global" title=""><i class="icon-angle-right"></i>Remboursements clients</a></li>
+            </ul>
+          </li>
+          <li><a title="" href="./?page=depot"><i class="icon-print"></i>Dépôt</a></li>
+          <li><a title=""><i class="icon-book"></i>Cahier de texte</a>
+            <ul>
+              <li><a href="./?page=demande_cahier" title=""><i class="icon-angle-right"></i>Commander un cahier</a></li>
+              <li><a href="./?page=suivi_cahier" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a title=""><i class="icon-money"></i>Carte de visite &amp; Chevalet</a>
+            <ul>
+              <li><a href="./?page=demande_carte" title=""><i class="icon-angle-right"></i>Faire une commande</a></li>
+              <li><a href="./?page=suivi_cartes" title=""><i class="icon-angle-right"></i>Suivi des commandes</a></li>
+            </ul>
+          </li>
+          <li><a href="./?page=Profile"><i class="icon-user"></i>Profil</a></li>
+
+          <li><a title="" style="background: #0d6554; cursor: default; color: #fff;"><i class="icon-cogs"></i>SAISON :
+              2026 / 2027 </a></li>
+          <li><a href="/login.html" title=""><i class="icon-off"></i>Déconnexion</a></li>
+
+        </ul>
+
+
+      </div>
+      <!-- ****************************************fin de menu **************************************** -->
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="main-bg">
+
+            <div class="top-stats">
+
+              <div class="top-stats-icons">
+
+                <a href="../logout.php" title="Déconnexion"><i class="icon-off"></i></a>
+
+              </div>
+
+            </div>
+
+            <div class="breadcrumbs-notify">
+
+              <a href="./?page=Accueil" title="">accueil /</a> <a title="">Robots </a>
+
+            </div>
+
+            <div class="heading-buttons-sec">
+
+            </div>
+
+            <!-- *********************************content**************************************			 -->
+
+            <div class="body-sec">
+
+
+              <div class="col-md-12">
+
+                <div class="widget-body">
+
+                  <div class="widget-heading blue">
+
+                    <i class="icon-book"></i>
+                    <h3 class="pull-left" style="100%">Liste des Livraisons</h3>
+
+                  </div>
+
+                  <div class="widget-sec">
+
+                    <div id="contact">
+
+                      <table id="stream_table" class="table table-striped table-bordered">
+
+                        <thead>
+
+                          <tr>
+
+                            <th> Date </th>
+
+                            <th> Ville</th>
+
+                            <th> Établissement</th>
+
+                            <th> Contact</th>
+
+                            <th> Tél.</th>
+
+                            <th> Réf.</th>
+
+                            <th> Vu</th>
+
+                            <th> Reçu</th>
+
+                            <th> Supprimer</th>
+
+                          </tr>
+
+                        </thead>
+
+                        <tbody>
+
+
+                        </tbody>
+
+                      </table>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="col-md-12">
+
+                <div class="widget-body">
+
+                  <div class="widget-heading green">
+
+                    <i class="icon-plus"></i>
+                    <h3 class="pull-left">Ajouter</h3>
+
+                  </div>
+
+                  <div class="widget-sec">
+
+                    <div id="contact">
+                      <form action="add-robot.php" class="form-add-remb" method="post">
+
+                        <table id="stream_table" class="table table-striped table-bordered">
+
+                          <thead>
+
+                            <tr>
+
+                              <th> Date </th>
+
+                              <th> Ville</th>
+
+                              <th> Établissement</th>
+
+                              <th> Contact</th>
+
+                              <th> Tél.</th>
+
+                              <th> Réf.</th>
+
+                            </tr>
+
+                          </thead>
+
+                          <tbody>
+
+                            <tr>
+
+                              <td style=";">
+                                <input type="date" name="date&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $i in &lt;b&gt;/home/ajialmedias/public_html/dev/representant/robot.php&lt;/b&gt; on line &lt;b&gt;277&lt;/b&gt;&lt;br /&gt;
+" style="">
+                              </td>
+
+                              <td>
+                                <select name="ville&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $i in &lt;b&gt;/home/ajialmedias/public_html/dev/representant/robot.php&lt;/b&gt; on line &lt;b&gt;281&lt;/b&gt;&lt;br /&gt;
+" placeholder="choisir une ville" required="">
+
+                                  <option value="">Choisir une ville</option>
+
+
+
+                                  <option value="Agadir">Agadir</option>
+
+                                  <option value="Assilah">Assilah</option>
+
+                                  <option value="Azilal">Azilal</option>
+
+                                  <option value="Benimellal">Benimellal</option>
+
+                                  <option value="Benslimane">Benslimane</option>
+
+                                  <option value="Berkane">Berkane</option>
+
+                                  <option value="Berrechid">Berrechid</option>
+
+                                  <option value="Bouarfa">Bouarfa</option>
+
+                                  <option value="Casablanca">Casablanca</option>
+
+                                  <option value="Chefchaouen">Chefchaouen</option>
+
+                                  <option value="Chefchaoun">Chefchaoun</option>
+
+                                  <option value="El Kalaa des Sraghna">El Kalaa des Sraghna</option>
+
+                                  <option value="Eljadida">Eljadida</option>
+
+                                  <option value="Errachidia">Errachidia</option>
+
+                                  <option value="Essaouira">Essaouira</option>
+
+                                  <option value="Fes">Fes</option>
+
+                                  <option value="Fkih ben saleh">Fkih ben saleh</option>
+
+                                  <option value="Guelmim">Guelmim</option>
+
+                                  <option value="Hoceima">Hoceima</option>
+
+                                  <option value="Ifrane">Ifrane</option>
+
+                                  <option value="Kenitra">Kenitra</option>
+
+                                  <option value="Khemisset">Khemisset</option>
+
+                                  <option value="Khenifra">Khenifra</option>
+
+                                  <option value="Khouribga">Khouribga</option>
+
+                                  <option value="Ksar el kbir">Ksar el kbir</option>
+
+                                  <option value="Laayoune">Laayoune</option>
+
+                                  <option value="Larache">Larache</option>
+
+                                  <option value="Marrakech">Marrakech</option>
+
+                                  <option value="Meknes">Meknes</option>
+
+                                  <option value="Missour">Missour</option>
+
+                                  <option value="Mohammedia">Mohammedia</option>
+
+                                  <option value="Nador">Nador</option>
+
+                                  <option value="Ouarzazate">Ouarzazate</option>
+
+                                  <option value="Oued zem">Oued zem</option>
+
+                                  <option value="Ouezzane">Ouezzane</option>
+
+                                  <option value="Oujda">Oujda</option>
+
+                                  <option value="Rabat">Rabat</option>
+
+                                  <option value="Salé">Salé</option>
+
+                                  <option value="Sefrou">Sefrou</option>
+
+                                  <option value="Settat">Settat</option>
+
+                                  <option value="Sidi bennour">Sidi bennour</option>
+
+                                  <option value="Sidi kacem">Sidi kacem</option>
+
+                                  <option value="Sidi slimane">Sidi slimane</option>
+
+                                  <option value="Souk el arbaa du gharb">Souk el arbaa du gharb</option>
+
+                                  <option value="Tanger">Tanger</option>
+
+                                  <option value="Tantan">Tantan</option>
+
+                                  <option value="Taounate">Taounate</option>
+
+                                  <option value="Taroudant">Taroudant</option>
+
+                                  <option value="Tata">Tata</option>
+
+                                  <option value="Taza">Taza</option>
+
+                                  <option value="Temara">Temara</option>
+
+                                  <option value="Tetouan">Tetouan</option>
+
+                                  <option value="Tiflet">Tiflet</option>
+
+                                  <option value="Tiznit">Tiznit</option>
+                                </select>
+                              </td>
+
+                              <td>
+                                <textarea type="text" name="etablissement&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $i in &lt;b&gt;/home/ajialmedias/public_html/dev/representant/robot.php&lt;/b&gt; on line &lt;b&gt;398&lt;/b&gt;&lt;br /&gt;
+" style=""></textarea>
+                              </td>
+                              <td><select name="contact&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $i in &lt;b&gt;/home/ajialmedias/public_html/dev/representant/robot.php&lt;/b&gt; on line &lt;b&gt;400&lt;/b&gt;&lt;br /&gt;
+" placeholder="choisir" "="" required="">
+
+																							<option value="">Choisir</option> 
+																							<option value=" Mme">Mme</option>
+
+                                  <option value="Mlle">Mlle</option>
+
+                                  <option value="Mr">Mr</option>
+                                </select>
+
+                              </td>
+                              <td>
+                                <input type="text" name="tel&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $i in &lt;b&gt;/home/ajialmedias/public_html/dev/representant/robot.php&lt;/b&gt; on line &lt;b&gt;412&lt;/b&gt;&lt;br /&gt;
+" style="">
+                              </td>
+                              <td>
+                                <input type="text" name="ref&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  Undefined variable $i in &lt;b&gt;/home/ajialmedias/public_html/dev/representant/robot.php&lt;/b&gt; on line &lt;b&gt;415&lt;/b&gt;&lt;br /&gt;
+" style="">
+                              </td>
+
+                            </tr>
+                          </tbody>
+
+                        </table>
+                        <input type="hidden" name="remboursement" value="1">
+                        <button type="submit" name="submit" class="btn green btn-submit">Ajouter</button>
+
+                      </form>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+            </div>
+            <!-- Body Sec -->
+
+          </div>
+          <!-- main-bg-->
+
+        </div>
+        <!-- Row -->
+
+      </div>
+      <!-- Container -->
+
+    </section>
+    <!-- Main Section -->
+
+    <!-- Side Panel -->
+
+  </div>
+  <!-- Wrapper -->
+  <script type="text/javascript">
+    function supp() {
+      if (confirm('voullez vous vraiment supprimez ce enregistrement ?')) return true;
+
+      else return false;
+
+    }
+  </script>
+
+
+
+
+</body><!-- Body -->
+
+</html>
